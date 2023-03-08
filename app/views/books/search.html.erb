@@ -1,0 +1,79 @@
+<% if @results.present? %>
+  <div class="search-container">
+    <% @results&.each do |result| %>
+      <div class="grid-item">
+        <div class="img"><%= image_tag result[:thumbnail] %></div>
+        <div class="text">
+          <h5><%= result[:title] %></h5>
+        </div>
+        <%= link_to "", '#', class: "link" %>
+        <%= hidden_field_tag :bookdata, result.to_json.html_safe, class: 'bookdata' %>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @results %>
+<% end %>
+
+<!-- モーダルウィンドウ -->
+<div class="modal-block">
+  <div class="modal-container">
+    <div class="modal-header">
+      <header>本の情報を登録して読書を開始しよう！</header>
+      <span class="material-icons-outlined" id="modal-close">
+        close
+      </span>
+    </div>
+    <div class="modal-contents">
+      <div class="img-section">
+        <img id="book-img" src="">
+      </div>
+      <div class="caption">
+        <%= form_with model: @register_book_form, url: books_path, local: true do |f| %>
+          <%= f.label :title, "タイトル", class: "book-form-label" %>
+          <%= f.text_field :title, class: "form-control book-form", id: "title-field" %>
+
+          <%= f.label :author, "著者", class: "book-form-label" %>
+          <%= f.text_field :author, class: "form-control book-form", id: "author-field" %>
+
+          <%= f.label :title, "ページ数", class: "book-form-label" %>
+          <%= f.text_field :page_count, class: "form-control book-form", id: "page_count-field" %>
+
+          <%= f.label :publisher, "出版社", class: "book-form-label" %>
+          <%= f.text_field :publisher, class: "form-control book-form", id: "publisher-field" %>
+
+          <%= f.label :published_date, "発行日", class: "book-form-label" %>
+          <%= f.date_field :published_date, value: "", class: "form-control book-form", id: "published_date-field" %>
+
+          <%= f.label :category, "カテゴリー", class: "book-form-label" %>
+          <%= f.select :category, [
+              ['無分類', '無分類'],
+              ['ビジネス', 'ビジネス'],
+              ['文芸', '文芸'],
+              ['一般・教養', '一般・教養'],
+              ['旅行ガイド', '旅行ガイド'],
+              ['趣味実用', '趣味実用'],
+              ['自己啓発', '自己啓発'],
+              ['こども', 'こども'],
+              ['教育・学習', '教育・学習']
+            ], { selected: '無分類'}, { class: "form-select book-form-select", name: 'category' } %>
+
+          <%= f.label :subcategory, "サブカテゴリー", class: "book-form-label" %>
+          <%= f.select :subcategory, [['無分類', '無分類']], { selected: '無分類'},
+            { class: "form-select book-form-select", name: 'subcategory' } %>
+
+          <%= f.hidden_field :description, value: "", id: "description-field" %>
+          <%= f.hidden_field :thumbnail, value: "", id: "thumbnail-field" %>
+          <%= f.hidden_field :isbn_10, value: "", id: "isbn_10-field" %>
+          <%= f.hidden_field :isbn_13, value: "", id: "isbn_13-field" %>
+          <%= f.hidden_field :done_up_to, value: 0 %>
+          <%= f.hidden_field :finished, value: 'false' %>
+          <%= f.hidden_field :category, value: "", id: "category-field" %>
+          <%= f.hidden_field :subcategory, value: "", id: "subcategory-field" %>
+          <br>
+          <%= f.submit "読書を開始しよう", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div id="bookmodal-overlay"></div>
+</div>

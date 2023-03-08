@@ -14,12 +14,10 @@
         <% @id = "header-item-error" %>
     <% end %>
 
-    <% if false %>
     <%= form_with url: search_books_path, method: :get, id: @id, local: true do |f| %>
         <%= f.search_field :search, class: "form-control", id: "header-search-field", placeholder: @placeholder %>
         <%= f.submit "検索", class: "btn btn-outline-light" %>
         <% flash[:error] = nil %>
-    <% end %>
     <% end %>
 
     </div>
