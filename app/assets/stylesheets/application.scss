@@ -1,1 +1,757 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+/* カラー設定 */
+
+$header-color: #679ab8;
+$header-font-color: #fbf6fa;
+$font-color: #202020;
+$body-color: #f5f5f5;
+$table: #fbf6fa;
+
+*, a {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: $body-color;
+}
+
+/* header */
+
+.header {
+  background-color: $header-color;
+  
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin: 0 10px;
+    
+
+    .header-logo {
+      font-size: 1.8em;
+      a {
+        color: #fbf6fa; 
+        span {
+          // color: #beadba;
+          color: #b3424a;
+          display: inline-block;
+          font-size: 1.3em;
+          transform: rotate(-5deg);
+        }
+      }
+    }
+
+    .search-box {
+      // ヘッダー検索窓の設定
+      #header-item {
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+
+        #header-search-field {
+          background-color: #fbf6fa; 
+          width: 300px;
+        }
+      }
+
+      #header-item-error {
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+
+        #header-search-field {
+          width: 300px;
+          border: 1px solid red;
+        }
+
+        ::placeholder {
+          color: red;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      a {
+        color: #fbf6fa; 
+      }
+    }
+  }
+}
+
+/* search-page */
+
+.search-container {
+  display: grid;
+  // 1fr -> 各要素の表示比率を同じ割合に設定, minmax -> 最小値と最大値を決める minmax(最小値, 最大値)で指定
+  // auto-fit -> 画面サイズでカラム数を変更
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  justify-content: center;
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .img {
+      img {
+        width: 130px;
+        height: 205px;
+      }
+    }
+  }
+}
+
+/* モーダル */
+  
+.modal-block {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+
+  .modal-container {
+    z-index: 30;
+    // 画像の大きさ
+    width: 70vw;
+    min-height: 60vh;
+    margin: 0 auto;
+
+    .modal-header {
+      position: relative;
+
+      header {
+        width: 100%;
+        height: 100%;
+        background-color: $header-color;
+        color: $header-font-color;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+      }
+
+      #modal-close {
+        position: absolute;
+        right: 5px;
+        cursor: pointer;
+      }
+
+    }
+
+    .modal-contents {
+      background-color: $table;
+      display: flex;
+      align-items: flex-start;
+      border-radius: 0 0 10px 10px;
+      padding-bottom: 10px;
+
+
+      // 画像サイズ
+      .img-section {
+        flex-basis: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        #book-img {
+          width: 100%;
+          height: 100%;
+          margin: 10px;
+          object-fit: scale-down;
+        }
+      }
+      // 画像下の説明文
+      .caption {
+        flex-basis: 70%;
+        font-size: 20px;
+        color:rgba(0, 0, 0, .9);
+        position: relative;
+        .book-form-label {
+          font-size: 0.6em;
+        }
+        
+        .book-form {
+          width: 80%;
+        }
+
+        .book-form-select {
+          display: flex;
+          width: 50%;
+        }
+        // 表示項目を増やす　の設定
+        .more-area {
+          // display: none;
+        }
+
+        .more {
+          position: absolute;
+          width: 150px;
+          height: 20px;
+          bottom: 5px;
+          right: 5px;
+          display: block;
+          border: none;
+          outline: 0;
+          transition: 0.5s;
+          font-size: 0.8em;
+          background: none;
+          // &::after {
+          //   font-family: "Material Icons Outlined";
+          //   content: "\e5cf 表示項目を増やす";
+          //   transition: 0.2s;
+          // }
+
+          // &.clicked::after {
+          //   font-family: "Material Icons Outlined";
+          //   content: "\e5ce 表示項目を減らす";
+          // }
+        }
+      }
+    }
+  }
+  #bookmodal-overlay {
+    // モーダルウィンドウの背景
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-color:rgba(0, 0, 0, .7);
+  }
+}
+
+/* ユーザーページ本棚 */
+
+/* タブ付き本棚 1 */
+#bookshelf {
+  width: 70%;
+  height: 800px;
+  overflow: hidden;
+  margin: 30px;
+
+  #bookshelf-header {
+    padding: 0;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      margin: 0;
+
+      .tab-label {
+        margin: 0 2px;
+        padding: 10px 20px;
+
+        &.active {
+          background-color: $header-color;
+          color: $header-font-color;
+        }
+      }
+    }
+  }
+
+  #bookshelf-body {
+    padding: 0;
+    overflow-y: scroll;
+
+    .th-container {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      margin: 0;
+      background-color: $header-color;
+      color: $header-font-color;
+
+      li {
+        &:nth-child(1) {
+          flex: 5;
+        }
+        &:nth-child(2) ,&:nth-child(3) {
+          flex: 6;
+        }
+        &:nth-child(4) {
+          flex: 3;
+        }
+      }
+    }
+
+    #item-finished, #item-all {
+      display: none;
+    }
+  }
+}
+
+
+// _book.html.erb, _form.html.erb, _record.html.erb
+
+.tr-container {
+    height: calc(95% / 5);
+    border-top: 1px solid $header-color;
+    position: relative;
+
+  .tr-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .td-title {
+      display: flex;
+      gap: 10px;
+
+      img {
+        width: 80px;
+        height: 120px;
+        margin: 10px 0;
+      }
+      
+      p {
+        align-self: center;
+      }
+    }
+
+    .td-content {
+      text-align: center;
+      &:nth-child(1) {
+        flex: 5;
+      }
+      &:nth-child(2) ,&:nth-child(3) {
+        flex: 6;
+      }
+      &:nth-child(4) {
+        flex: 3;
+      }
+
+      a {
+        margin: 5px 0;
+      }
+    }
+
+    .chart-content {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 80px;
+        height: 80px;
+        transform: rotate(-90deg);
+      }
+      circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #f3f3f3;
+        stroke-dasharray: 220;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+
+      }
+      .line {
+        stroke: #03a9f4;
+        animation: circleAnime 1s forwards;
+      }
+
+      @keyframes circleAnime {
+        0% {
+          stroke-dasharray: 0 220;
+        }
+        100% {
+          stroke-dasharray: 220 220;
+        }
+      }
+      .number {
+        position: absolute;
+        .percent {
+          display: block;
+          margin: 0;
+          span {
+            font-size: 1.2em;
+          }
+        }
+        .page-number {
+          display: none;
+          margin: 0;
+          font-size: 0.7em;
+          span {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+    .chart-content:hover {
+      .percent {
+        display: none;
+      }
+      .page-number {
+        display: block;
+      }
+    }
+  }
+}
+
+// _record.html.erb
+
+.tr-container.review-container {
+    // height: calc(95% / 5);
+    // border-top: 1px solid $header-color;
+    // position: relative;
+
+  .tr-content {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
+
+    .td-content {
+      display: flex;
+      flex-direction: column;
+
+      .td-header {
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        .td-header-left {
+          position: absolute;
+          left: 0;
+        }
+      }
+
+      .content-wrapper {
+        display: flex;
+
+        .content-left {
+          flex: 1;
+          img {
+            width: 80px;
+            height: 120px;
+          }
+          button {
+            margin-top: 5px;
+          }
+        }
+
+        .content-right {
+          flex: 3;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* status container */
+
+.status-container {
+  display: grid;
+  margin: 30px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: repeat(4, 1fr);
+
+  // @media(max-width: 800px) {
+  //   display: grid;
+  //   margin: 30px;
+  //   grid-template-columns: repeat(4, 1fr);
+  //   grid-template-rows: repeat(4, 1fr);
+  //   }
+
+  #item1 {
+    background-color: aqua;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    
+    .profile-img {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  #item2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+
+
+  }
+  #item3 {
+    background-color: darkkhaki;
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+  }
+  #item4 {
+    background-color: aquamarine;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+  #item5 {
+    background-color: pink;
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+  }
+  #item6 {
+    grid-column: 5 / 9;
+    grid-row: 1 / 3;
+        // grid-column: 1 / 5;
+        // grid-row: 3 / 5;
+
+    .cat-chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      // justify-content: space-evenly;
+      
+      #chart-wrapper {
+        flex: 5;
+        // position: relative;
+        // height: 100%;
+
+        #cat-chart {
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          // position: absolute;
+          // top: 50%;
+          // left: 50%;
+        }
+
+        #subcat-business {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          position: absolute;
+        }
+        #subcat-literature {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-liberal_arts {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-travel {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-hobby_practical {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-self_enlightenment {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-children {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        #subcat-education {
+          display: none;
+          margin-top: 10px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+      }
+
+      .val-wrapper {
+        flex: 4;
+        .cat-chart-val {
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 10px 0 0 10px;
+
+            li {
+              margin: 3px 0 0;
+              list-style: none;
+              display: flex;
+              align-items: center;
+              
+
+              .box {
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+              }
+
+              p {
+                margin: 3px 10px 3px;
+              }
+
+              &:nth-child(1) .box {
+                background: #ff7f7f;
+              }
+              &:nth-child(2) .box {
+                background: #ff7fff;
+              }
+              &:nth-child(3) .box {
+                background: #7f7fff;
+              }
+              &:nth-child(4) .box {
+                background: #7fffff;
+              }
+              &:nth-child(5) .box {
+                background: #7fff7f;
+              }
+              &:nth-child(6) .box {
+                background: #ffff7f;
+              }
+              &:nth-child(7) .box {
+                background: #ffbf7f;
+              }
+              &:nth-child(8) .box {
+                background: #20b2aa;
+              }
+              &:nth-child(9) .box {
+                background: #d3d3d3;
+              }
+            }
+          }
+        }
+
+        .subcat-chart-val {
+          display: none;
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 10px 0 0 10px;
+
+            li {
+              margin: 3px 0 0;
+              list-style: none;
+              display: flex;
+              align-items: center;
+              
+
+              .box {
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+              }
+
+              p {
+                margin: 3px 10px 3px;
+              }
+
+              &:nth-child(1) .box {
+                background: #ff7f7f;
+              }
+              &:nth-child(2) .box {
+                background: #ff7fff;
+              }
+              &:nth-child(3) .box {
+                background: #7f7fff;
+              }
+              &:nth-child(4) .box {
+                background: #7fffff;
+              }
+              &:nth-child(5) .box {
+                background: #7fff7f;
+              }
+              &:nth-child(6) .box {
+                background: #ffff7f;
+              }
+              &:nth-child(7) .box {
+                background: #ffbf7f;
+              }
+              &:nth-child(8) .box {
+                background: #20b2aa;
+              }
+              &:nth-child(9) .box {
+                background: #d3d3d3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* record-edit */
+
+.record-edit-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #record-edit-form {
+    width: 80px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+/* レビュー一覧ページ */
+
+/* 本棚　詳しく見る */
+
+.book-info-top {
+  display: flex;
+
+  .book-info-title {
+    
+  }
+}
+
+
+.book-info-left {
+  li {
+    list-style: none;
+    display :flex;
+
+    & #book-info-desc {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
