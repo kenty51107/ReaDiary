@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_172607) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_174256) do
   create_table "books", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -30,6 +30,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_172607) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "records", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.integer "done_up_to", default: 0, null: false
+    t.float "rating"
+    t.boolean "finished", default: false, null: false
+    t.string "category", null: false
+    t.string "subcategory", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_records_on_book_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -44,4 +56,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_172607) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "records", "books"
 end
