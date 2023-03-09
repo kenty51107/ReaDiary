@@ -1,0 +1,934 @@
+<%####################### ダッシュボード %>
+<div class="status-container">
+  <div class="status-item" id="item1">
+    <div class="profile-img">
+      <% if false %>
+      <%= image_tag "profile-img.png" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="status-item" id="item2">
+    
+    <% if false %>
+    
+    <% @user ||= current_user %>
+    <div class="stats">
+      <span class="material-icons-outlined">
+        person
+      </span>
+      <a href="<%= following_user_path(@user) %>">
+        <strong id="following" class="stat">
+          <%= @user.following.count %>
+        </strong>
+        following
+      </a>
+    </div>
+
+    <% end %>
+
+  </div>
+  <div class="status-item" id="item3">
+
+    <% if false %>
+    <span class="material-icons-outlined">
+      menu_book
+    </span>
+  </div>
+  <div class="status-item" id="item4">
+    <div class="stats">
+      <a href="<%= followers_user_path(@user) %>">
+        <strong id="followers" class="stat">
+          <%= @user.followers.count %>
+        </strong>
+        followers
+      </a>
+    </div>
+
+    <% end %>
+  </div>
+  <div class="status-item" id="item5">item 5</div>
+  <div class="status-item" id="item6">   
+
+    <div class="cat-chart-container">
+      <% if @books.present? %>
+        <%#cat##################################%>
+        <div class="val-wrapper">
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-business##################################%>
+          <div class="subcat-chart-val">
+            <ul>
+              <li class="li-business">
+                <div class="subcat-value" data="<%= @subcats[:ビジネス][:ビジネス書] * 100 / @books.length %>"></div>
+                <% if @subcats[:ビジネス][:ビジネス書] > 0 %>
+                  <div class="box"></div>
+                  <p class="subcat-val">ビジネス書</p>
+                  <div class="subcat-percent">
+                    <%= @subcats[:ビジネス][:ビジネス書] %>
+                  </div>
+                <% end %>
+              </li>
+              <li class="li-business">
+                <div class="subcat-value" data="<%= @subcats[:ビジネス][:経営実務書] * 100 / @books.length %>"></div>
+                <% if @subcats[:ビジネス][:経営実務書] > 0 %>
+                  <div class="box"></div>
+                  <p class="subcat-val">経営実務書</p>
+                  <div class="subcat-percent">
+                    <%= @subcats[:ビジネス][:経営実務書] %>
+                  </div>
+                <% end %>
+              </li>
+              <li class="li-business">
+                <div class="subcat-value" data="<%= @subcats[:ビジネス][:投資・資産運用] * 100 / @books.length %>"></div>
+                <% if @subcats[:ビジネス][:投資・資産運用] > 0 %>
+                  <div class="box"></div>
+                  <p class="subcat-val">投資・資産運用</p>
+                  <div class="subcat-percent">
+                    <%= @subcats[:ビジネス][:投資・資産運用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li class="li-business">
+                <div class="subcat-value" data="<%= @subcats[:ビジネス][:その他] * 100 / @books.length %>"></div>
+                <% if @subcats[:ビジネス][:その他] > 0 %>
+                  <div class="box"></div>
+                  <p class="subcat-val">その他</p>
+                  <div class="subcat-percent">
+                    <%= @subcats[:ビジネス][:その他] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-literature##################################%>
+          <% if false %>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-liberal_arts##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-travel##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-hobby_practical##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-self_enlightenment##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-children##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <%#subcat-education##################################%>
+          <div class="cat-chart-val">
+            <ul>
+              <li>
+                <div class="cat-value" data="<%= @cats[:ビジネス] * 100 / @books.length %>"></div>
+                <% if @cats[:ビジネス] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">ビジネス</p>
+                  <div class="cat-percent">
+                    <%= @cats[:ビジネス] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:文芸] * 100 / @books.length %>"></div>
+                <% if @cats[:文芸] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">文芸</p>
+                  <div class="cat-percent">
+                    <%= @cats[:文芸] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:一般・教養] * 100 / @books.length %>"></div>
+                <% if @cats[:一般・教養] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">一般・教養</p>
+                  <div class="cat-percent">
+                    <%= @cats[:一般・教養] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:旅行ガイド] * 100 / @books.length %>"></div>
+                <% if @cats[:旅行ガイド] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">旅行ガイド</p>
+                  <div class="cat-percent">
+                    <%= @cats[:旅行ガイド] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:趣味実用] * 100 / @books.length %>"></div>
+                <% if @cats[:趣味実用] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">趣味実用</p>
+                  <div class="cat-percent">
+                    <%= @cats[:趣味実用] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:自己啓発] * 100 / @books.length %>"></div>
+                <% if @cats[:自己啓発] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">自己啓発</p>
+                  <div class="cat-percent">
+                    <%= @cats[:自己啓発] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:こども] * 100 / @books.length %>"></div>
+                <% if @cats[:こども] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">こども</p>
+                  <div class="cat-percent">
+                    <%= @cats[:こども] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:教育・学習] * 100 / @books.length %>"></div>
+                <% if @cats[:教育・学習] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">教育・学習</p>
+                  <div class="cat-percent">
+                    <%= @cats[:教育・学習] %>
+                  </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="cat-value" data="<%= @cats[:無分類] * 100 / @books.length %>"></div>
+                <% if @cats[:無分類] > 0 %>
+                  <div class="box"></div>
+                  <p class="cat-val">無分類</p>
+                  <div class="cat-percent">
+                    <%= @cats[:無分類] %>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+
+        <%#chart-body##################################%>
+        <div id="chart-wrapper">
+          <div id="cat-chart"></div>
+          <div id="subcat-business"></div>
+          <div id="subcat-literature"></div>
+          <div id="subcat-liberal_arts"></div>
+          <div id="subcat-travel"></div>
+          <div id="subcat-hobby_practical"></div>
+          <div id="subcat-self_enlightenment"></div>
+          <div id="subcat-children"></div>
+          <div id="subcat-education"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%########################### 本棚 %>
+<div class="card text-center" id="bookshelf">
+  <div id="bookshelf-header">
+    <ul>
+      <li class="tab-label active" data="item-reading">読書中</li>
+      <li class="tab-label" data="item-finished">既読</li>
+    </ul>
+  </div>
+  <div class="card-body" id="bookshelf-body">
+    <%####################### 本棚 読書中 %>
+    <div class="tab-content" id="item-reading">
+      <div class="th-container">
+        <ul>
+          <li>進捗</li>
+          <li>タイトル</li>
+          <li>著者</li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="td-container">
+        <% if false %>
+        <%= render partial: 'books/book', collection: @reading, as: :book %>
+        <% end %>
+      </div>
+    </div>
+    <%####################### 本棚 既読 %>
+    <div class="tab-content" id="item-finished">
+      <div class="th-container">
+        <ul>
+          <li>進捗</li>
+          <li>タイトル</li>
+          <li>著者</li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="td-container">
+        <% if false %>
+        <%= turbo_frame_tag "books-page-#{@finished.current_page}" do %>
+          <%= render partial: 'books/finished', collection: @finished, as: :finished %>
+          <%= turbo_frame_tag "books-page-#{@finished.next_page}", loading: :lazy, src: path_to_next_page(@finished) %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
