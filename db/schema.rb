@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_101722) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_172607) do
+  create_table "books", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.string "author", null: false
+    t.date "published_date"
+    t.string "publisher"
+    t.text "description"
+    t.string "thumbnail"
+    t.integer "page_count"
+    t.string "isbn_10", null: false
+    t.string "isbn_13", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["isbn_10", "isbn_13"], name: "index_books_on_isbn_10_and_isbn_13", unique: true
+    t.index ["isbn_10"], name: "index_books_on_isbn_10", unique: true
+    t.index ["isbn_13"], name: "index_books_on_isbn_13", unique: true
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -24,4 +43,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_101722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "users"
 end
