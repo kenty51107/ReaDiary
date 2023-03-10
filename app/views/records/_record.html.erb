@@ -1,0 +1,25 @@
+<div class="tr-container review-container">
+  <div class="tr-content">
+    <div class="td-content">
+      <div class="td-header">
+          <div class="td-header-left">
+            <%= link_to record.book.user.name, '#' %>
+          </div>
+          <div class="td-header-center">
+            <h5><%= record.book.title %></h5>
+          </div>
+      </div>
+      <div class="content-wrapper">
+        <div class="content-left">
+          <%= image_tag record.book.thumbnail %>
+          <%= button_to "本の詳細", '#', class: "btn btn-outline-primary" %>
+        </div>
+        <div class="content-right">
+          <div class="review">
+            <%= record.content %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

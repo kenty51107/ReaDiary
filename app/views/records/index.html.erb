@@ -1,0 +1,20 @@
+<h1>レビュー一覧</h1>
+<div class="card text-center" id="bookshelf">
+  <div id="bookshelf-header">
+    <ul>
+      <li class="tab-label active" data="item-reading">読書中</li>
+      <li class="tab-label" data="item-finished">既読</li>
+      <li class="tab-label" data="item-all">既読</li>
+    </ul>
+  </div>
+  <div class="card-body" id="bookshelf-body">
+ 
+    <div class="tab-content" id="item-reading">
+      <div class="td-container">
+        <div>
+          <%= render @records %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

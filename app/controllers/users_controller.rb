@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @books = current_user.books.all
-    # @reading = current_user.books.where(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
-    # @finished = current_user.books.where.not(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
-    # @user = current_user
+    @books = current_user.books.all
+    @reading = current_user.books.where(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
+    @finished = current_user.books.where.not(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
+    @user = current_user
 
     @cats = {
       '無分類': 0,

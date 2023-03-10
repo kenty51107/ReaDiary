@@ -1,0 +1,24 @@
+<%= turbo_frame_tag record do %>
+  <%= form_with model: record do |f| %>
+    <div class="tr-container">
+      <div class="tr-content">
+        <div class="td-content chart-content">
+          <%= image_tag record.book.thumbnail %>
+        </div>
+        <div class="td-content td-title">
+          <div class="record-edit-form-wrapper">
+            <%= f.number_field :done_up_to, in: record.done_up_to.. record.book.page_count, class: "form-control", id: "record-edit-form" %>
+            <p>&nbsp; / <%= record.book.page_count %></p>
+            <%= f.hidden_field :finished %>
+          </div>
+        </div>
+        <div class="td-content">
+        </div>
+        <div class="td-content">
+          <%= f.submit "登録", class: "btn btn-sm btn-outline-primary" %>
+          <%= link_to "キャンセル", user_path(record.book.user_id), class: "btn btn-sm btn-outline-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

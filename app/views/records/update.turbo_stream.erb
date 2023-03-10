@@ -1,0 +1,6 @@
+<%= turbo_stream.replace @record do %>
+  <%= render partial: 'books/book',
+    locals: { book: @record.book } %>
+<% end %>
+
+<%= turbo_stream.update 'flash', partial: 'layouts/flash' %>

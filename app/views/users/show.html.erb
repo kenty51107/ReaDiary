@@ -906,9 +906,7 @@
         </ul>
       </div>
       <div class="td-container">
-        <% if false %>
         <%= render partial: 'books/book', collection: @reading, as: :book %>
-        <% end %>
       </div>
     </div>
     <%####################### 本棚 既読 %>
@@ -922,11 +920,9 @@
         </ul>
       </div>
       <div class="td-container">
-        <% if false %>
         <%= turbo_frame_tag "books-page-#{@finished.current_page}" do %>
           <%= render partial: 'books/finished', collection: @finished, as: :finished %>
           <%= turbo_frame_tag "books-page-#{@finished.next_page}", loading: :lazy, src: path_to_next_page(@finished) %>
-        <% end %>
         <% end %>
       </div>
     </div>

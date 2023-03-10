@@ -1,6 +1,31 @@
 class BooksController < ApplicationController
+  def show
+    @book = current_user.books.find(params[:id])
+    @tag = @book.tags
+  end
+
+  def create
+    # フォームオブジェクトにはuniquenessのバリデーションを与えられない
+    # 個々のモデルに与える方法しかない
+    # 現状放置
+    @register_book_form = RegisterBookForm.new(book_params)
+    if @register_book_form.valid?
+      @register_book_form.save
+      redirect_to user_path(current_user.id), notice: "読書を開始しよう"
+    else
+      flash.now[:alert] = "保存失敗"
+      render :search
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to user_path(current_user.id), notice: "読書記録を削除しました。"
+  end
+
   def search
-    # @register_book_form = RegisterBookForm.new
+    @register_book_form = RegisterBookForm.new
     if params[:search].blank?
       flash[:error] = "検索ワードを入力して下さい。"
     else
@@ -35,5 +60,22 @@ class BooksController < ApplicationController
       end
       @results = Kaminari.paginate_array(data_hash).page(params[:page]).per(9)
     end
+  end
+
+  private
+
+  def book_params
+    # mergeメソッドでログインユーザーが入力したパラメータにログインユーザーのidを追加する
+    params.require(:register_book_form).permit(
+      :title, :author, :published_date, :publisher, :description, :thumbnail,
+      :page_count, :isbn_10, :isbn_13, :done_up_to, :rating, :finished,
+      :category, :subcategory, :name
+    ).merge(user_id: current_user.id)
+  end
+
+  # 自身のIDに対応する登録した図書を取得するメソッド
+  def set_book
+    @book = current_user.books.find_by(id: params[:id])
+    redirect_to books_path, alert: "権限がありません" if @book.nil?
   end
 end

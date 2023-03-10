@@ -190,188 +190,188 @@ $(function () {
 //   $('#subcat-education').css('background', 'conic-gradient(#ff7f7f ' + areaA_8 + 'deg, #ff7fff ' +  areaAB_8 + ', #7f7fff ' + areaBC_8 + ')');
   
 
-//   // 本登録、サブカテゴリー選択肢 ////////////////////////////////////////
-//   const business = [
-//     { value: "ビジネス書", label: "ビジネス書" },
-//     { value: "経営実務書", label: "経営実務書" },
-//     { value: "投資・資産運用", label: "投資・資産運用" },
-//     { value: "その他", label: "その他" },
-//   ];
+  // 本登録、サブカテゴリー選択肢 ////////////////////////////////////////
+  const business = [
+    { value: "ビジネス書", label: "ビジネス書" },
+    { value: "経営実務書", label: "経営実務書" },
+    { value: "投資・資産運用", label: "投資・資産運用" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const literature = [
-//     { value: "ミステリー・サスペンス", label: "ミステリー・サスペンス" },
-//     { value: "冒険・アクション小説", label: "冒険・アクション小説" },
-//     { value: "青春・恋愛小説", label: "青春・恋愛小説" },
-//     { value: "時代・歴史小説", label: "時代・歴史小説" },
-//     { value: "ホラー・幻想小説", label: "ホラー・幻想小説" },
-//     { value: "経済小説", label: "経済小説" },
-//     { value: "戦争シミュレーション小説", label: "戦争シミュレーション小説" },
-//     { value: "その他の小説", label: "その他の小説" },
-//     { value: "エッセイ", label: "エッセイ" },
-//     { value: "詩歌集", label: "詩歌集" },
-//     { value: "官能小説", label: "官能小説" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const literature = [
+    { value: "ミステリー・サスペンス", label: "ミステリー・サスペンス" },
+    { value: "冒険・アクション小説", label: "冒険・アクション小説" },
+    { value: "青春・恋愛小説", label: "青春・恋愛小説" },
+    { value: "時代・歴史小説", label: "時代・歴史小説" },
+    { value: "ホラー・幻想小説", label: "ホラー・幻想小説" },
+    { value: "経済小説", label: "経済小説" },
+    { value: "戦争シミュレーション小説", label: "戦争シミュレーション小説" },
+    { value: "その他の小説", label: "その他の小説" },
+    { value: "エッセイ", label: "エッセイ" },
+    { value: "詩歌集", label: "詩歌集" },
+    { value: "官能小説", label: "官能小説" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const liberal_arts = [
-//     { value: "一般書", label: "一般書" },
-//     { value: "ノンフィクション", label: "ノンフィクション" },
-//     { value: "科学・テクノロジー", label: "科学・テクノロジー" },
-//     { value: "コンピュータ・IT", label: "コンピュータ・IT" },
-//     { value: "歴史・地理", label: "歴史・地理" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const liberal_arts = [
+    { value: "一般書", label: "一般書" },
+    { value: "ノンフィクション", label: "ノンフィクション" },
+    { value: "科学・テクノロジー", label: "科学・テクノロジー" },
+    { value: "コンピュータ・IT", label: "コンピュータ・IT" },
+    { value: "歴史・地理", label: "歴史・地理" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const travel = [
-//     { value: "海外旅行ガイド", label: "海外旅行ガイド" },
-//     { value: "国内旅行ガイド", label: "国内旅行ガイド" },
-//     { value: "紀行文", label: "紀行文" },
-//     { value: "旅行会話", label: "旅行会話" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const travel = [
+    { value: "海外旅行ガイド", label: "海外旅行ガイド" },
+    { value: "国内旅行ガイド", label: "国内旅行ガイド" },
+    { value: "紀行文", label: "紀行文" },
+    { value: "旅行会話", label: "旅行会話" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const hobby_practical = [
-//     { value: "コミック", label: "コミック" },
-//     { value: "スポーツ", label: "スポーツ" },
-//     { value: "アウトドア", label: "アウトドア" },
-//     { value: "健康", label: "健康" },
-//     { value: "料理", label: "料理" },
-//     { value: "食・グルメ", label: "食・グルメ" },
-//     { value: "手芸", label: "手芸" },
-//     { value: "女性向け", label: "女性向け" },
-//     { value: "恋愛・結婚・離婚", label: "恋愛・結婚・離婚" },
-//     { value: "ファッション・美容", label: "ファッション・美容" },
-//     { value: "ペット", label: "ペット" },
-//     { value: "エンターテイメント", label: "エンターテイメント" },
-//     { value: "タレント本", label: "タレント本" },
-//     { value: "写真集・画集", label: "写真集・画集" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const hobby_practical = [
+    { value: "コミック", label: "コミック" },
+    { value: "スポーツ", label: "スポーツ" },
+    { value: "アウトドア", label: "アウトドア" },
+    { value: "健康", label: "健康" },
+    { value: "料理", label: "料理" },
+    { value: "食・グルメ", label: "食・グルメ" },
+    { value: "手芸", label: "手芸" },
+    { value: "女性向け", label: "女性向け" },
+    { value: "恋愛・結婚・離婚", label: "恋愛・結婚・離婚" },
+    { value: "ファッション・美容", label: "ファッション・美容" },
+    { value: "ペット", label: "ペット" },
+    { value: "エンターテイメント", label: "エンターテイメント" },
+    { value: "タレント本", label: "タレント本" },
+    { value: "写真集・画集", label: "写真集・画集" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const self_enlightenment = [
-//     { value: "自己啓発", label: "自己啓発" },
-//     { value: "スピリチュアル", label: "スピリチュアル" },
-//     { value: "勉強・資格", label: "勉強・資格" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const self_enlightenment = [
+    { value: "自己啓発", label: "自己啓発" },
+    { value: "スピリチュアル", label: "スピリチュアル" },
+    { value: "勉強・資格", label: "勉強・資格" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const children = [
-//     {
-//       value: "占い・おまじない・心理ゲーム",
-//       label: "占い・おまじない・心理ゲーム",
-//     },
-//     { value: "児童文学・絵本", label: "児童文学・絵本" },
-//     { value: "図鑑・自由研究", label: "図鑑・自由研究" },
-//     { value: "その他", label: "その他" },
-//   ];
+  const children = [
+    {
+      value: "占い・おまじない・心理ゲーム",
+      label: "占い・おまじない・心理ゲーム",
+    },
+    { value: "児童文学・絵本", label: "児童文学・絵本" },
+    { value: "図鑑・自由研究", label: "図鑑・自由研究" },
+    { value: "その他", label: "その他" },
+  ];
 
-//   const education = [
-//     { value: "教育図書", label: "教育図書" },
-//     { value: "語学ー英語", label: "語学ー英語" },
-//     { value: "語学ーその他の言語", label: "語学ーその他の言語" },
-//   ];
+  const education = [
+    { value: "教育図書", label: "教育図書" },
+    { value: "語学ー英語", label: "語学ー英語" },
+    { value: "語学ーその他の言語", label: "語学ーその他の言語" },
+  ];
 
-//   // カテゴリーが選択されたときに発火
-//   $("[name=category]").change(function () {
-//     let category = $(this).val();
-//     console.log(category);
+  // カテゴリーが選択されたときに発火
+  $("[name=category]").change(function () {
+    let category = $(this).val();
+    console.log(category);
 
-//     // categoryのhidden_fieldの値を変更 臨時対応
-//     $("#category-field").val(category);
+    // categoryのhidden_fieldの値を変更 臨時対応
+    $("#category-field").val(category);
 
-//     // サブカテゴリーを初期化
-//     $("[name=subcategory]").children().remove();
+    // サブカテゴリーを初期化
+    $("[name=subcategory]").children().remove();
 
-//     switch (category) {
-//       case "無分類":
-//         $("[name=subcategory]").append(
-//           $("<option>").attr({ value: "無分類" }).text("無分類")
-//         );
-//         $('#subcategory-field').val('無分類');
-//         break;
-//       case "ビジネス":
-//         business.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('ビジネス書');
-//         break;
-//       case "文芸":
-//         literature.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('ミステリー・サスペンス');
-//         break;
-//       case "一般・教養":
-//         liberal_arts.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('一般書');
-//         break;
-//       case "旅行ガイド":
-//         travel.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('海外旅行ガイド');
-//         break;
-//       case "趣味実用":
-//         hobby_practical.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('コミック');
-//         break;
-//       case "自己啓発":
-//         self_enlightenment.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('自己啓発');
-//         break;
-//       case "こども":
-//         children.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('占い・おまじない');
-//         break;
-//       case "教育・学習":
-//         education.forEach(function (el) {
-//           $("[name=subcategory]").append(
-//             $("<option>").attr({ value: el.value }).text(el.label)
-//           );
-//         });
-//         $('#subcategory-field').val('教育図書');
-//         break;
-//     }
-//   });
+    switch (category) {
+      case "無分類":
+        $("[name=subcategory]").append(
+          $("<option>").attr({ value: "無分類" }).text("無分類")
+        );
+        $('#subcategory-field').val('無分類');
+        break;
+      case "ビジネス":
+        business.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('ビジネス書');
+        break;
+      case "文芸":
+        literature.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('ミステリー・サスペンス');
+        break;
+      case "一般・教養":
+        liberal_arts.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('一般書');
+        break;
+      case "旅行ガイド":
+        travel.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('海外旅行ガイド');
+        break;
+      case "趣味実用":
+        hobby_practical.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('コミック');
+        break;
+      case "自己啓発":
+        self_enlightenment.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('自己啓発');
+        break;
+      case "こども":
+        children.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('占い・おまじない');
+        break;
+      case "教育・学習":
+        education.forEach(function (el) {
+          $("[name=subcategory]").append(
+            $("<option>").attr({ value: el.value }).text(el.label)
+          );
+        });
+        $('#subcategory-field').val('教育図書');
+        break;
+    }
+  });
 
-//   // subcategoryのhidden_fieldの値を変更 臨時対応
-//   $("[name=subcategory]").change(function () {
-//     let subcategory = $(this).val();
-//     console.log(subcategory);
-//     $("#subcategory-field").val(subcategory);
-//   });
+  // subcategoryのhidden_fieldの値を変更 臨時対応
+  $("[name=subcategory]").change(function () {
+    let subcategory = $(this).val();
+    console.log(subcategory);
+    $("#subcategory-field").val(subcategory);
+  });
 
-//   // 本棚タブ切り替え機能
-//   $(".tab-label").click(function () {
-//     $(".tab-content").css("display", "none");
-//     $(".tab-label").removeClass("active");
+  // 本棚タブ切り替え機能
+  $(".tab-label").click(function () {
+    $(".tab-content").css("display", "none");
+    $(".tab-label").removeClass("active");
 
-//     let item_data = $(this).attr("data");
-//     $(`#${item_data}`).css("display", "block");
-//     $(this).addClass("active");
-//   });
+    let item_data = $(this).attr("data");
+    $(`#${item_data}`).css("display", "block");
+    $(this).addClass("active");
+  });
 
   // ページ更新時にモーダルがちらつき防止対策 //////////////////////////////////////
   $(".modal-block").css("display", "flex").hide();
