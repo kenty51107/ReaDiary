@@ -103,4 +103,16 @@ class UsersController < ApplicationController
       @subcats[book.record.category.to_sym][book.record.subcategory.to_sym] += 1
     end
   end
+
+  def following
+    @user = User.find(params[:id])
+    @users = @user.following.page(params[:page])
+    render 'show_follow', status: :unprocessable_entity
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+    render 'show_follow', status: :unprocessable_entity
+  end
 end

@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :records
 end
