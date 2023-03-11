@@ -102,6 +102,5 @@ class UsersController < ApplicationController
       @cats[book.record.category.to_sym] += 1
       @subcats[book.record.category.to_sym][book.record.subcategory.to_sym] += 1
     end
-    logger.debug("###############{@cats}")
   end
 end

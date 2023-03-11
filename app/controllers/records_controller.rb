@@ -11,10 +11,8 @@ class RecordsController < ApplicationController
   def create
     @record = current_user.records.new(record_params)
     if @record.save
-      logger.debug("レコードの保存成功 book_id : #{params[:record]}")
       redirect_to user_path(current_user.id), notice: "読書を開始できます。"
     else
-      logger.debug("レコードの保存失敗")
       flash.now[:alert] = "読者開始できません"
       render 'show', status: :unprocessable_entity
     end

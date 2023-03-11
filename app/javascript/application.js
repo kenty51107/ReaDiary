@@ -14,180 +14,180 @@ import jquery from "jquery";
 window.$ = jquery;
 
 $(function () {
-//   // カテゴリーチャート、凡例のオンクリックイベント
-//   $('.box, .cat-val, .cat-percent').click(function() {
-//     $('#cat-chart').fadeOut();
-//     $('#subcat-business').fadeIn();
-//   });
+  // カテゴリーチャート、凡例のオンクリックイベント
+  $('.box, .cat-val, .cat-percent').click(function() {
+    $('#cat-chart').fadeOut();
+    $('#subcat-business').fadeIn();
+  });
 
-//   // カテゴリーチャート
-//   const areaA = Math.round($('li').eq(0).children('.cat-value').attr('data') * 3.6);
-//   const areaB = Math.round($('li').eq(1).children('.cat-value').attr('data') * 3.6);
-//   const areaC = Math.round($('li').eq(2).children('.cat-value').attr('data') * 3.6);
-//   const areaD = Math.round($('li').eq(3).children('.cat-value').attr('data') * 3.6);
-//   const areaE = Math.round($('li').eq(4).children('.cat-value').attr('data') * 3.6);
-//   const areaF = Math.round($('li').eq(5).children('.cat-value').attr('data') * 3.6);
-//   const areaG = Math.round($('li').eq(6).children('.cat-value').attr('data') * 3.6);
-//   const areaH = Math.round($('li').eq(7).children('.cat-value').attr('data') * 3.6);
-//   const areaI = Math.round($('li').eq(8).children('.cat-value').attr('data') * 3.6);
+  // カテゴリーチャート
+  const areaA = Math.round($('li').eq(0).children('.cat-value').attr('data') * 3.6);
+  const areaB = Math.round($('li').eq(1).children('.cat-value').attr('data') * 3.6);
+  const areaC = Math.round($('li').eq(2).children('.cat-value').attr('data') * 3.6);
+  const areaD = Math.round($('li').eq(3).children('.cat-value').attr('data') * 3.6);
+  const areaE = Math.round($('li').eq(4).children('.cat-value').attr('data') * 3.6);
+  const areaF = Math.round($('li').eq(5).children('.cat-value').attr('data') * 3.6);
+  const areaG = Math.round($('li').eq(6).children('.cat-value').attr('data') * 3.6);
+  const areaH = Math.round($('li').eq(7).children('.cat-value').attr('data') * 3.6);
+  const areaI = Math.round($('li').eq(8).children('.cat-value').attr('data') * 3.6);
 
-//   const areaAB = areaA + 'deg ' + ( areaA + areaB ) + 'deg';
-//   const areaBC = areaA + areaB + 'deg ' + ( areaA + areaB + areaC ) + 'deg';
-//   const areaCD = areaA + areaB + areaC + 'deg ' + ( areaA + areaB + areaC + areaD ) + 'deg';
-//   const areaDE = areaA + areaB + areaC + areaD + 'deg ' + ( areaA + areaB + areaC + areaD + areaE ) + 'deg';
-//   const areaEF = areaA + areaB + areaC + areaD + areaE + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF ) + 'deg';
-//   const areaFG = areaA + areaB + areaC + areaD + areaE + areaF + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF + areaG ) + 'deg';
-//   const areaGH = areaA + areaB + areaC + areaD + areaE + areaF + areaG + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF + areaG + areaH ) + 'deg';
-//   const areaHI = areaA + areaB + areaC + areaD + areaE + areaF + areaG + areaH + 'deg ' + '360deg';
+  const areaAB = areaA + 'deg ' + ( areaA + areaB ) + 'deg';
+  const areaBC = areaA + areaB + 'deg ' + ( areaA + areaB + areaC ) + 'deg';
+  const areaCD = areaA + areaB + areaC + 'deg ' + ( areaA + areaB + areaC + areaD ) + 'deg';
+  const areaDE = areaA + areaB + areaC + areaD + 'deg ' + ( areaA + areaB + areaC + areaD + areaE ) + 'deg';
+  const areaEF = areaA + areaB + areaC + areaD + areaE + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF ) + 'deg';
+  const areaFG = areaA + areaB + areaC + areaD + areaE + areaF + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF + areaG ) + 'deg';
+  const areaGH = areaA + areaB + areaC + areaD + areaE + areaF + areaG + 'deg ' + ( areaA + areaB + areaC + areaD + areaE + areaF + areaG + areaH ) + 'deg';
+  const areaHI = areaA + areaB + areaC + areaD + areaE + areaF + areaG + areaH + 'deg ' + '360deg';
 
-//   $('#cat-chart').css('background', 'conic-gradient(#ff7f7f ' + areaA + 'deg, #ff7fff ' +  areaAB + ', #7f7fff ' + areaBC +
-//     ', #7fffff ' + areaCD + ', #7fff7f ' + areaDE + ', #ffff7f ' + areaEF + ', #ffbf7f ' + areaFG + ', #20b2aa ' + areaGH + ', #d3d3d3 ' + areaHI + ')');
+  $('#cat-chart').css('background', 'conic-gradient(#ff7f7f ' + areaA + 'deg, #ff7fff ' +  areaAB + ', #7f7fff ' + areaBC +
+    ', #7fffff ' + areaCD + ', #7fff7f ' + areaDE + ', #ffff7f ' + areaEF + ', #ffbf7f ' + areaFG + ', #20b2aa ' + areaGH + ', #d3d3d3 ' + areaHI + ')');
 
-//   // ビジネス、サブカテゴリーチャート
-//   const areaA_1 = Math.round($('.li-business').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_1 = Math.round($('.li-business').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_1 = Math.round($('.li-business').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_1 = Math.round($('.li-business').eq(3).children('.subcat-value').attr('data') * 3.6);
+  // ビジネス、サブカテゴリーチャート
+  const areaA_1 = Math.round($('.li-business').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_1 = Math.round($('.li-business').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_1 = Math.round($('.li-business').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_1 = Math.round($('.li-business').eq(3).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_1 = areaA_1 + 'deg ' + ( areaA_1 + areaB_1 ) + 'deg';
-//   const areaBC_1 = areaA_1 + areaB_1 + 'deg ' + ( areaA_1 + areaB_1 + areaC_1 ) + 'deg';
-//   const areaCD_1 = areaA_1 + areaB_1 + areaC_1 + 'deg ' + '360deg';
+  const areaAB_1 = areaA_1 + 'deg ' + ( areaA_1 + areaB_1 ) + 'deg';
+  const areaBC_1 = areaA_1 + areaB_1 + 'deg ' + ( areaA_1 + areaB_1 + areaC_1 ) + 'deg';
+  const areaCD_1 = areaA_1 + areaB_1 + areaC_1 + 'deg ' + '360deg';
 
-//   $('#subcat-business').css('background', 'conic-gradient(#ff7f7f ' + areaA_1 + 'deg, #ff7fff ' +  areaAB_1 + ', #7f7fff ' + areaBC_1 +
-//     ', #7fffff ' + areaCD_1 + ')');
+  $('#subcat-business').css('background', 'conic-gradient(#ff7f7f ' + areaA_1 + 'deg, #ff7fff ' +  areaAB_1 + ', #7f7fff ' + areaBC_1 +
+    ', #7fffff ' + areaCD_1 + ')');
 
-//   // 文芸、サブカテゴリーチャート
-//   const areaA_2 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_2 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_2 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_2 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
-//   const areaE_2 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
-//   const areaF_2 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
-//   const areaG_2 = Math.round($('li').eq(6).children('.subcat-value').attr('data') * 3.6);
-//   const areaH_2 = Math.round($('li').eq(7).children('.subcat-value').attr('data') * 3.6);
-//   const areaI_2 = Math.round($('li').eq(8).children('.subcat-value').attr('data') * 3.6);
-//   const areaJ_2 = Math.round($('li').eq(9).children('.subcat-value').attr('data') * 3.6);
-//   const areaK_2 = Math.round($('li').eq(10).children('.subcat-value').attr('data') * 3.6);
-//   const areaL_2 = Math.round($('li').eq(11).children('.subcat-value').attr('data') * 3.6);
+  // 文芸、サブカテゴリーチャート
+  const areaA_2 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_2 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_2 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_2 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  const areaE_2 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
+  const areaF_2 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
+  const areaG_2 = Math.round($('li').eq(6).children('.subcat-value').attr('data') * 3.6);
+  const areaH_2 = Math.round($('li').eq(7).children('.subcat-value').attr('data') * 3.6);
+  const areaI_2 = Math.round($('li').eq(8).children('.subcat-value').attr('data') * 3.6);
+  const areaJ_2 = Math.round($('li').eq(9).children('.subcat-value').attr('data') * 3.6);
+  const areaK_2 = Math.round($('li').eq(10).children('.subcat-value').attr('data') * 3.6);
+  const areaL_2 = Math.round($('li').eq(11).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_2 = areaA_2 + 'deg ' + ( areaA_2 + areaB_2 ) + 'deg';
-//   const areaBC_2 = areaA_2 + areaB_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 ) + 'deg';
-//   const areaCD_2 = areaA_2 + areaB_2 + areaC_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 ) + 'deg';
-//   const areaDE_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 ) + 'deg';
-//   const areaEF_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 ) + 'deg';
-//   const areaFG_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 ) + 'deg';
-//   const areaGH_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 ) + 'deg';
-//   const areaHI_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 ) + 'deg';
-//   const areaIJ_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 ) + 'deg';
-//   const areaJK_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + areaK_2 ) + 'deg';
-//   const areaKL_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + areaK_2 + 'deg ' + '360deg';
+  const areaAB_2 = areaA_2 + 'deg ' + ( areaA_2 + areaB_2 ) + 'deg';
+  const areaBC_2 = areaA_2 + areaB_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 ) + 'deg';
+  const areaCD_2 = areaA_2 + areaB_2 + areaC_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 ) + 'deg';
+  const areaDE_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 ) + 'deg';
+  const areaEF_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 ) + 'deg';
+  const areaFG_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 ) + 'deg';
+  const areaGH_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 ) + 'deg';
+  const areaHI_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 ) + 'deg';
+  const areaIJ_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 ) + 'deg';
+  const areaJK_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + 'deg ' + ( areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + areaK_2 ) + 'deg';
+  const areaKL_2 = areaA_2 + areaB_2 + areaC_2 + areaD_2 + areaE_2 + areaF_2 + areaG_2 + areaH_2 + areaI_2 + areaJ_2 + areaK_2 + 'deg ' + '360deg';
 
-//   $('#subcat-literature').css('background', 'conic-gradient(#ff7f7f ' + areaA_2 + 'deg, #ff7fff ' +  areaAB_2 + ', #7f7fff ' + areaBC_2 + ', #7fffff ' + areaCD_2 + ', #7fff7f ' + areaDE_2 +
-//     ', #ffff7f ' + areaEF_2 + ', #ffbf7f ' + areaFG_2 + ', #ff7fbf ' + areaGH_2 + ', #bf7fff ' + areaHI_2 + ', #7fbfff ' + areaIJ_2 + ', #7fffbf ' + areaJK_2 + ', #bfff7f ' + areaKL_2 + ')');
+  $('#subcat-literature').css('background', 'conic-gradient(#ff7f7f ' + areaA_2 + 'deg, #ff7fff ' +  areaAB_2 + ', #7f7fff ' + areaBC_2 + ', #7fffff ' + areaCD_2 + ', #7fff7f ' + areaDE_2 +
+    ', #ffff7f ' + areaEF_2 + ', #ffbf7f ' + areaFG_2 + ', #ff7fbf ' + areaGH_2 + ', #bf7fff ' + areaHI_2 + ', #7fbfff ' + areaIJ_2 + ', #7fffbf ' + areaJK_2 + ', #bfff7f ' + areaKL_2 + ')');
 
-//   // 一般・教養、サブカテゴリーチャート
+  // 一般・教養、サブカテゴリーチャート
   
-//   const areaA_3 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_3 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_3 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_3 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
-//   const areaE_3 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
-//   const areaF_3 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
+  const areaA_3 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_3 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_3 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_3 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  const areaE_3 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
+  const areaF_3 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_3 = areaA_3 + 'deg ' + ( areaA_3 + areaB_3 ) + 'deg';
-//   const areaBC_3 = areaA_3 + areaB_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 ) + 'deg';
-//   const areaCD_3 = areaA_3 + areaB_3 + areaC_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 + areaD_3 ) + 'deg';
-//   const areaDE_3 = areaA_3 + areaB_3 + areaC_3 + areaD_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 + areaD_3 + areaE_3 ) + 'deg';
-//   const areaEF_3 = areaA_3 + areaB_3 + areaC_3 + areaD_3 + areaE_3 + 'deg ' + '360deg';
+  const areaAB_3 = areaA_3 + 'deg ' + ( areaA_3 + areaB_3 ) + 'deg';
+  const areaBC_3 = areaA_3 + areaB_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 ) + 'deg';
+  const areaCD_3 = areaA_3 + areaB_3 + areaC_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 + areaD_3 ) + 'deg';
+  const areaDE_3 = areaA_3 + areaB_3 + areaC_3 + areaD_3 + 'deg ' + ( areaA_3 + areaB_3 + areaC_3 + areaD_3 + areaE_3 ) + 'deg';
+  const areaEF_3 = areaA_3 + areaB_3 + areaC_3 + areaD_3 + areaE_3 + 'deg ' + '360deg';
 
-//   $('#subcat-liberal_arts').css('background', 'conic-gradient(#ff7f7f ' + areaA_3 + 'deg, #ff7fff ' +  areaAB_3 + ', #7f7fff ' + areaBC_3 +
-//     ', #7fffff ' + areaCD_3 + ', #7fff7f ' + areaDE_3 + ', #ffff7f ' + areaEF_3 + ')');
+  $('#subcat-liberal_arts').css('background', 'conic-gradient(#ff7f7f ' + areaA_3 + 'deg, #ff7fff ' +  areaAB_3 + ', #7f7fff ' + areaBC_3 +
+    ', #7fffff ' + areaCD_3 + ', #7fff7f ' + areaDE_3 + ', #ffff7f ' + areaEF_3 + ')');
 
-//   // 旅行ガイド、サブカテゴリーチャート
-//   const areaA_4 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_4 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_4 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_4 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
-//   const areaE_4 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
+  // 旅行ガイド、サブカテゴリーチャート
+  const areaA_4 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_4 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_4 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_4 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  const areaE_4 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_4 = areaA_4 + 'deg ' + ( areaA_4 + areaB_4 ) + 'deg';
-//   const areaBC_4 = areaA_4 + areaB_4 + 'deg ' + ( areaA_4 + areaB_4 + areaC_4 ) + 'deg';
-//   const areaCD_4 = areaA_4 + areaB_4 + areaC_4 + 'deg ' + ( areaA_4 + areaB_4 + areaC_4 + areaD_4 ) + 'deg';
-//   const areaDE_4 = areaA_4 + areaB_4 + areaC_4 + areaD_4 + 'deg ' + '360deg';
+  const areaAB_4 = areaA_4 + 'deg ' + ( areaA_4 + areaB_4 ) + 'deg';
+  const areaBC_4 = areaA_4 + areaB_4 + 'deg ' + ( areaA_4 + areaB_4 + areaC_4 ) + 'deg';
+  const areaCD_4 = areaA_4 + areaB_4 + areaC_4 + 'deg ' + ( areaA_4 + areaB_4 + areaC_4 + areaD_4 ) + 'deg';
+  const areaDE_4 = areaA_4 + areaB_4 + areaC_4 + areaD_4 + 'deg ' + '360deg';
 
-//   $('#subcat-travel').css('background', 'conic-gradient(#ff7f7f ' + areaA_4 + 'deg, #ff7fff ' +  areaAB_4 + ', #7f7fff ' + areaBC_4 +
-//     ', #7fffff ' + areaCD_4 + ', #7fff7f ' + areaDE_4 + ')');
+  $('#subcat-travel').css('background', 'conic-gradient(#ff7f7f ' + areaA_4 + 'deg, #ff7fff ' +  areaAB_4 + ', #7f7fff ' + areaBC_4 +
+    ', #7fffff ' + areaCD_4 + ', #7fff7f ' + areaDE_4 + ')');
 
-//   // 趣味実用、サブカテゴリーチャート
-//   const areaA_5 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_5 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_5 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_5 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
-//   const areaE_5 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
-//   const areaF_5 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
-//   const areaG_5 = Math.round($('li').eq(6).children('.subcat-value').attr('data') * 3.6);
-//   const areaH_5 = Math.round($('li').eq(7).children('.subcat-value').attr('data') * 3.6);
-//   const areaI_5 = Math.round($('li').eq(8).children('.subcat-value').attr('data') * 3.6);
-//   const areaJ_5 = Math.round($('li').eq(9).children('.subcat-value').attr('data') * 3.6);
-//   const areaK_5 = Math.round($('li').eq(10).children('.subcat-value').attr('data') * 3.6);
-//   const areaL_5 = Math.round($('li').eq(11).children('.subcat-value').attr('data') * 3.6);
-//   const areaM_5 = Math.round($('li').eq(12).children('.subcat-value').attr('data') * 3.6);
-//   const areaN_5 = Math.round($('li').eq(13).children('.subcat-value').attr('data') * 3.6);
-//   const areaO_5 = Math.round($('li').eq(14).children('.subcat-value').attr('data') * 3.6);
+  // 趣味実用、サブカテゴリーチャート
+  const areaA_5 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_5 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_5 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_5 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  const areaE_5 = Math.round($('li').eq(4).children('.subcat-value').attr('data') * 3.6);
+  const areaF_5 = Math.round($('li').eq(5).children('.subcat-value').attr('data') * 3.6);
+  const areaG_5 = Math.round($('li').eq(6).children('.subcat-value').attr('data') * 3.6);
+  const areaH_5 = Math.round($('li').eq(7).children('.subcat-value').attr('data') * 3.6);
+  const areaI_5 = Math.round($('li').eq(8).children('.subcat-value').attr('data') * 3.6);
+  const areaJ_5 = Math.round($('li').eq(9).children('.subcat-value').attr('data') * 3.6);
+  const areaK_5 = Math.round($('li').eq(10).children('.subcat-value').attr('data') * 3.6);
+  const areaL_5 = Math.round($('li').eq(11).children('.subcat-value').attr('data') * 3.6);
+  const areaM_5 = Math.round($('li').eq(12).children('.subcat-value').attr('data') * 3.6);
+  const areaN_5 = Math.round($('li').eq(13).children('.subcat-value').attr('data') * 3.6);
+  const areaO_5 = Math.round($('li').eq(14).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_5 = areaA_5 + 'deg ' + ( areaA_5 + areaB_5 ) + 'deg';
-//   const areaBC_5 = areaA_5 + areaB_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 ) + 'deg';
-//   const areaCD_5 = areaA_5 + areaB_5 + areaC_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 ) + 'deg';
-//   const areaDE_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 ) + 'deg';
-//   const areaEF_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 ) + 'deg';
-//   const areaFG_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 ) + 'deg';
-//   const areaGH_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 ) + 'deg';
-//   const areaHI_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 ) + 'deg';
-//   const areaIJ_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 ) + 'deg';
-//   const areaJK_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 ) + 'deg';
-//   const areaKL_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 ) + 'deg';
-//   const areaLM_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 + areaL_5 ) + 'deg';
-//   const areaMN_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + areaM_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 + areaL_5 + areaM_5 ) + 'deg';
-//   const areaNO_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + areaM_5 + areaN_5 + 'deg ' + '360deg';
+  const areaAB_5 = areaA_5 + 'deg ' + ( areaA_5 + areaB_5 ) + 'deg';
+  const areaBC_5 = areaA_5 + areaB_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 ) + 'deg';
+  const areaCD_5 = areaA_5 + areaB_5 + areaC_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 ) + 'deg';
+  const areaDE_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 ) + 'deg';
+  const areaEF_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 ) + 'deg';
+  const areaFG_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 ) + 'deg';
+  const areaGH_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 ) + 'deg';
+  const areaHI_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 ) + 'deg';
+  const areaIJ_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 ) + 'deg';
+  const areaJK_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 ) + 'deg';
+  const areaKL_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 ) + 'deg';
+  const areaLM_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 + areaL_5 ) + 'deg';
+  const areaMN_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + areaM_5 + 'deg ' + ( areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaK_5 + areaL_5 + areaM_5 ) + 'deg';
+  const areaNO_5 = areaA_5 + areaB_5 + areaC_5 + areaD_5 + areaE_5 + areaF_5 + areaG_5 + areaH_5 + areaI_5 + areaJ_5 + areaK_5 + areaL_5 + areaM_5 + areaN_5 + 'deg ' + '360deg';
 
 
-//   $('#subcat-hobby_pratical').css('background', 'conic-gradient(#ff7f7f ' + areaA_5 + 'deg, #ff7fff ' +  areaAB_5 + ', #7f7fff ' + areaBC_5 + ', #7fffff ' + areaCD_5 + ', #7fff7f ' +
-//     areaDE_5 + ', #ffff7f ' + areaEF_5 + ', #ffbf7f ' + areaFG_5 + ', #20b2aa ' + areaGH_5 + ', #d3d3d3 ' + areaHI_5 + ', #ff7fbf ' + areaIJ_5 + ', #bf7fff ' + areaJK_5 +
-//     ', #7fbfff ' + areaKL_5 + ', #7fffbf ' + areaLM_5 + ', #bfff7f ' + areaMN_5 + ', #556b2f ' + areaNO_5 + ')');
+  $('#subcat-hobby_pratical').css('background', 'conic-gradient(#ff7f7f ' + areaA_5 + 'deg, #ff7fff ' +  areaAB_5 + ', #7f7fff ' + areaBC_5 + ', #7fffff ' + areaCD_5 + ', #7fff7f ' +
+    areaDE_5 + ', #ffff7f ' + areaEF_5 + ', #ffbf7f ' + areaFG_5 + ', #20b2aa ' + areaGH_5 + ', #d3d3d3 ' + areaHI_5 + ', #ff7fbf ' + areaIJ_5 + ', #bf7fff ' + areaJK_5 +
+    ', #7fbfff ' + areaKL_5 + ', #7fffbf ' + areaLM_5 + ', #bfff7f ' + areaMN_5 + ', #556b2f ' + areaNO_5 + ')');
 
-//   // 自己啓発、サブカテゴリーチャート
-//   const areaA_6 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_6 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_6 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_6 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  // 自己啓発、サブカテゴリーチャート
+  const areaA_6 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_6 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_6 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_6 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_6 = areaA_6 + 'deg ' + ( areaA_6 + areaB_6 ) + 'deg';
-//   const areaBC_6 = areaA_6 + areaB_6 + 'deg ' + ( areaA_6 + areaB_6 + areaC_6 ) + 'deg';
-//   const areaCD_6 = areaA_6 + areaB_6 + areaC_6 + 'deg ' + '360deg';
+  const areaAB_6 = areaA_6 + 'deg ' + ( areaA_6 + areaB_6 ) + 'deg';
+  const areaBC_6 = areaA_6 + areaB_6 + 'deg ' + ( areaA_6 + areaB_6 + areaC_6 ) + 'deg';
+  const areaCD_6 = areaA_6 + areaB_6 + areaC_6 + 'deg ' + '360deg';
 
-//   $('#subcat-self_enlightenment').css('background', 'conic-gradient(#ff7f7f ' + areaA_6 + 'deg, #ff7fff ' +  areaAB_6 + ', #7f7fff ' + areaBC_6 + ', #7fffff ' + areaCD_6 + ')');
+  $('#subcat-self_enlightenment').css('background', 'conic-gradient(#ff7f7f ' + areaA_6 + 'deg, #ff7fff ' +  areaAB_6 + ', #7f7fff ' + areaBC_6 + ', #7fffff ' + areaCD_6 + ')');
 
-//   // こども、サブカテゴリーチャート
-//   const areaA_7 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_7 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_7 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
-//   const areaD_7 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
+  // こども、サブカテゴリーチャート
+  const areaA_7 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_7 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_7 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  const areaD_7 = Math.round($('li').eq(3).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_7 = areaA_7 + 'deg ' + ( areaA_7 + areaB_7 ) + 'deg';
-//   const areaBC_7 = areaA_7 + areaB_7 + 'deg ' + ( areaA_7 + areaB_7 + areaC_7 ) + 'deg';
-//   const areaCD_7 = areaA_7 + areaB_7 + areaC_7 + 'deg ' + '360deg';
+  const areaAB_7 = areaA_7 + 'deg ' + ( areaA_7 + areaB_7 ) + 'deg';
+  const areaBC_7 = areaA_7 + areaB_7 + 'deg ' + ( areaA_7 + areaB_7 + areaC_7 ) + 'deg';
+  const areaCD_7 = areaA_7 + areaB_7 + areaC_7 + 'deg ' + '360deg';
 
-//   $('#subcat-children').css('background', 'conic-gradient(#ff7f7f ' + areaA_7 + 'deg, #ff7fff ' +  areaAB_7 + ', #7f7fff ' + areaBC_7 + ', #7fffff ' + areaCD_7 + ')');
+  $('#subcat-children').css('background', 'conic-gradient(#ff7f7f ' + areaA_7 + 'deg, #ff7fff ' +  areaAB_7 + ', #7f7fff ' + areaBC_7 + ', #7fffff ' + areaCD_7 + ')');
 
-//   // 教育・学習、サブカテゴリーチャート
-//   const areaA_8 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
-//   const areaB_8 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
-//   const areaC_8 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
+  // 教育・学習、サブカテゴリーチャート
+  const areaA_8 = Math.round($('li').eq(0).children('.subcat-value').attr('data') * 3.6);
+  const areaB_8 = Math.round($('li').eq(1).children('.subcat-value').attr('data') * 3.6);
+  const areaC_8 = Math.round($('li').eq(2).children('.subcat-value').attr('data') * 3.6);
 
-//   const areaAB_8 = areaA_8 + 'deg ' + ( areaA_8 + areaB_8 ) + 'deg';
-//   const areaBC_8 = areaA_8 + areaB_8 + 'deg ' + '360deg';
+  const areaAB_8 = areaA_8 + 'deg ' + ( areaA_8 + areaB_8 ) + 'deg';
+  const areaBC_8 = areaA_8 + areaB_8 + 'deg ' + '360deg';
 
-//   $('#subcat-education').css('background', 'conic-gradient(#ff7f7f ' + areaA_8 + 'deg, #ff7fff ' +  areaAB_8 + ', #7f7fff ' + areaBC_8 + ')');
+  $('#subcat-education').css('background', 'conic-gradient(#ff7f7f ' + areaA_8 + 'deg, #ff7fff ' +  areaAB_8 + ', #7f7fff ' + areaBC_8 + ')');
   
 
   // 本登録、サブカテゴリー選択肢 ////////////////////////////////////////
