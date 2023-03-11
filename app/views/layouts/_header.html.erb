@@ -26,8 +26,8 @@
 			<% if false %>
 					<%= link_to "レビュー一覧", records_path %>
 					<%= link_to "Users", users_path %>
-					<%= link_to "User page", user_path(current_user.id) %>
 					<% end %>
+					<%= link_to "User page", user_path(current_user.id) %>
 					<%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
 			<% else %>
 					<%= link_to "Log in", new_user_session_path %>
