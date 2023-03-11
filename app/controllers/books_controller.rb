@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def show
     @book = current_user.books.find(params[:id])
-    @tag = @book.tags
+    # @tag = @book.tags
   end
 
   def create
@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     @register_book_form = RegisterBookForm.new(book_params)
     if @register_book_form.valid?
       @register_book_form.save
-      redirect_to user_path(current_user.id), notice: "読書を開始しよう"
+      redirect_to user_path(current_user.id), status: :see_other, notice: "読書を開始しよう"
     else
       flash.now[:alert] = "保存失敗"
       render :search
