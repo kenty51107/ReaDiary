@@ -22,6 +22,7 @@ gem "devise"
 gem "devise-i18n"
 gem "chartkick"
 gem "jquery-rails"
+gem "lograge"
 
 
 group :development, :test do

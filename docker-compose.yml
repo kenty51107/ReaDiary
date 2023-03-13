@@ -8,9 +8,11 @@ services:
       - .:/readiary
       - public-data:/readiary/public
       - tmp-data:/readiary/tmp
-      - log-data:/readiary/log
+      - log-data:/var/log/nginx
     depends_on:
       - db
+    stdin_open: true
+    tty: true
   db:
     image: mysql:5.7
     environment:
@@ -32,5 +34,7 @@ services:
 volumes:
   public-data:
   tmp-data:
+    driver: local
   log-data:
+    driver: local
   db-data:
