@@ -1,0 +1,9 @@
+<%= turbo_frame_tag @article do %>
+  <div>
+    <h2>New article</h2>
+
+    <%= render "form", article: @article %>
+
+    <%= link_to "Back", new_article_path(button: true), class: "btn btn-primary" %>
+  </div>
+<% end %>

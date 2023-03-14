@@ -1,0 +1,8 @@
+<%= turbo_frame_tag article do %>
+  <div>
+    <h2><%= article.title %></h2>
+
+    <%= link_to "Show", article_path(article, detail: 1), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary" %>
+  </div>
+<% end %>

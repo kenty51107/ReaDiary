@@ -1,0 +1,11 @@
+<%= turbo_frame_tag @article do %>
+  <div>
+    <%= render 'article_detail', article: @article %>
+
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+    <div>
+      <%= button_to "Destroy", article_path(@article), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "btn btn-danger" %>
+    </div>
+    <%= link_to "Back", article_path(@article), class: "btn btn-primary" %>
+  </div>
+<% end %>
