@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def show
     @book = current_user.books.find(params[:id])
     # @tag = @book.tags
+
   end
 
   def create
@@ -14,7 +15,7 @@ class BooksController < ApplicationController
       redirect_to user_path(current_user.id), status: :see_other, notice: "読書を開始しよう"
     else
       flash.now[:alert] = "保存失敗"
-      render :search
+      render :search, status: :unprocessable_entity
     end
   end
 

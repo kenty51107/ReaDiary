@@ -1,0 +1,2 @@
+class Testdb < ApplicationRecord
+end
