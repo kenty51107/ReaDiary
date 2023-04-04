@@ -1,0 +1,37 @@
+<header class="header">
+  <div class="header-wrapper">
+    <div class="header-logo">
+      <%= link_to root_path do %>
+        <span>R</span>ea<span>D</span>iary
+      <% end %>
+    </div>
+
+    <div class="search-box">
+      <% if false %>
+      <% @placeholder = "著者名・作品名" %>
+      <% @id = "header-item" %>
+      <% unless flash[:error].nil? %>
+        <% @placeholder = "検索ワードを入力して下さい。" %>
+        <% @id = "header-item-error" %>
+      <% end %>
+      <%= form_with url: search_books_path, method: :get, id: @id, local: true do |f| %>
+        <%= f.search_field :search, class: "form-control", id: "header-search-field", placeholder: @placeholder %>
+        <%= f.submit "検索", class: "btn btn-outline-light" %>
+        <% flash[:error] = nil %>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="header-nav">
+      <% if current_user %>
+      <% if false %>
+        <%= link_to "レビュー一覧", records_path %>
+        <%= link_to "Users", users_path %>
+      <% end %>
+        <%= link_to "User page", user_path(current_user.id) %>
+        <%= link_to "Log out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path %>
+      <% end %>
+    </div>
+  </div>
+</header>

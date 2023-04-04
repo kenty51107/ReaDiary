@@ -1,0 +1,43 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/readiary
+      - public-data:/readiary/public
+      - tmp-data:/readiary/tmp
+      - log-data:/readiary/log
+    depends_on:
+      - db
+    environment:
+      RAILS_LOG_TO_STDOUT: enabled
+      TZ: Asia/Tokyo
+    stdin_open: true
+    tty: true
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    volumes:
+      - db-data:/var/lib/mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-time-zone=Asia/Tokyo
+
+  nginx:
+    build:
+      context: nginx
+    volumes:
+      - public-data:/readiary/public
+      - tmp-data:/readiary/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
