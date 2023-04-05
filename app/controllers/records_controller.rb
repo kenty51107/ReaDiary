@@ -11,7 +11,6 @@ class RecordsController < ApplicationController
   def create
     # book = current_user.books.find_by(id: record_params[:book_id])
     @new_record = Record.new(record_params)
-    @record = Record.find(params[:id])
     if @new_record.save!
       redirect_to user_path(current_user.id), notice: "読書記録を更新しました。"
     else
