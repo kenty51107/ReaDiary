@@ -1,4 +1,4 @@
-<div class="card record-card">
+<div class="card record-card", style="width: 30rem;">
   <div class="card-header record-header">
     <%= record.book.user.name %>
     <%= time_ago_in_words(record.created_at) %>
@@ -9,4 +9,5 @@
       <%= record.created_at.strftime("%m/%d %H:%M") %>
     </div>
   </div>
+  <%= link_to "", record %>
 </div>

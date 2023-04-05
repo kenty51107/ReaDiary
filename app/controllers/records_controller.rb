@@ -3,6 +3,12 @@ class RecordsController < ApplicationController
     @records = Record.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def show
+    @record = Record.find(params[:id])
+    @reply = @record.replies.new
+    @replies = Reply.where(record_id: @record.id).order(created_at: :desc)
+  end
+
   def new
     @record = Record.find(params[:record_id])
     @new_record = @record.book.records.new

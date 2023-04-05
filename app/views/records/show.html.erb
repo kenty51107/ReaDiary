@@ -1,0 +1,35 @@
+<div class="reply-timeline-container">
+  <div class="card reply-card" style="width: 30rem;">
+    <div class="card-header reply-header">
+      <%= @record.book.user.name %>
+      <%= time_ago_in_words(@record.created_at) %>
+    </div>
+    <div class="card-body reply-body">
+      <p><%= @record.content %></p>
+      <div class="reply-footer">
+        <%= @record.created_at.strftime("%m/%d %H:%M") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="reply-form">
+    <%= render 'replies/reply' %>
+  </div>
+
+  <div class="reply-timeline">
+    <% @replies&.each do |reply| %>
+      <div class="card reply-card" style="width: 30rem;">
+        <div class="card-header reply-header">
+          <%= reply.user.name %>
+          <%= time_ago_in_words(reply.created_at) %>
+        </div>
+        <div class="card-body reply-body">
+          <p><%= reply.comment %></p>
+          <div class="reply-footer">
+            <%= reply.created_at.strftime("%m/%d %H:%M") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

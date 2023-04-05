@@ -1,19 +1,49 @@
-<h1>Hello#index</h1>
-<p>Find me in app/views/hello/index.html.erb</p>
-<!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Action
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
-
-<div id="app">
-  {{ text }}
+<div class="toppage-container">
+  <div class="top">
+    <div class="top-content">
+      <% if false %>
+      <h1><span>読書</span>を通して</h1>
+      <h1>誰かと<span>繋</span>がろう</h1>
+      <% end %>
+      <div class="form-container">
+        <div id="form">
+          <div class="form-header">
+            <ul>
+              <li @click="select('sign_in')" v-bind:class="{'active': show == 'sign_in'}">ログイン</li>
+            </ul>
+          </div>
+          <div class="form-body">
+            <div v-if="show == 'sign_in'">
+              <%= form_with model: @user, url: user_session_path, data: { turbo: false } do |f| %>
+                <div class="field">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-box" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "input-box" %>
+                </div>
+                <br>
+                <div class="actions">
+                  <%= f.submit "ログイン", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <div class="card ranking-container">
+    <h5>登録数が多い書籍</h5>
+    <div class="ranking-wrapper">
+      <% @data&.each do |d| %>
+        <div class="card ranking-item">
+          <%= image_tag d[:thumbnail], class: "ranking-item-img" %>
+          <div class="card-body">
+            <p><%= d[:title] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

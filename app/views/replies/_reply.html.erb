@@ -1,0 +1,6 @@
+<%= form_with model: @reply do |f| %>
+  <%= f.text_area :comment, class: "form-control" %>
+  <%= f.hidden_field :record_id, value: @record.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "返信する", class: "btn btn-primary" %>
+<% end %>

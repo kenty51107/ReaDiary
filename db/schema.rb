@@ -42,11 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_174728) do
 
   create_table "replies", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "record_id", null: false
-    t.integer "responder_id", null: false
+    t.bigint "user_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_id"], name: "index_replies_on_record_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -65,4 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_174728) do
   add_foreign_key "books", "users"
   add_foreign_key "records", "books"
   add_foreign_key "replies", "records"
+  add_foreign_key "replies", "users"
 end
