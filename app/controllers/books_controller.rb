@@ -7,16 +7,6 @@ class BooksController < ApplicationController
     @book = current_user.books.find(params[:id])
   end
 
-  def update
-    @book = current_user.books.find(params[:id])
-    if @book.update(detail_params)
-      render :show
-    else
-      flash.now[:alert] = "更新失敗"
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   def create
     # フォームオブジェクトにはuniquenessのバリデーションを与えられない
     # 個々のモデルに与える方法しかない
@@ -31,6 +21,16 @@ class BooksController < ApplicationController
     end
   end
 
+  def update
+    @book = current_user.books.find(params[:id])
+    if @book.update(detail_params)
+      render :show
+    else
+      flash.now[:alert] = "更新失敗"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
     if params[:search].blank?
       flash[:error] = "検索ワードを入力して下さい。"
     else
-     @results = Kaminari.paginate_array(books_search(params[:search])).page(params[:page]).per(20)
+      @results = Kaminari.paginate_array(books_search(params[:search])).page(params[:page]).per(20)
     end
   end
 
@@ -63,8 +63,9 @@ class BooksController < ApplicationController
 
   def detail_params
     params.require(:book).permit(:title, :author, :published_date, :publisher,
-                                  :page_count)
-  end                               
+                                 :page_count)
+  end
+
   # 自身のIDに対応する登録した図書を取得するメソッド
   def set_book
     @book = current_user.books.find_by(id: params[:id])
@@ -95,21 +96,21 @@ class BooksController < ApplicationController
                         data['volumeInfo']['imageLinks']['thumbnail']
                       end
           data_hash.push({
-                            title: data['volumeInfo']['title'],
-                            author: data['volumeInfo']['authors'],
-                            published_date: data['volumeInfo']['publishedDate'],
-                            publisher: data['volumeInfo']['publisher'],
-                            description: data['volumeInfo']['description'],
-                            thumbnail:,
-                            page_count: data['volumeInfo']['pageCount'],
-                            isbn_10: isbn_10,
-                            isbn_13: isbn_13
-                          })
+                           title: data['volumeInfo']['title'],
+                           author: data['volumeInfo']['authors'],
+                           published_date: data['volumeInfo']['publishedDate'],
+                           publisher: data['volumeInfo']['publisher'],
+                           description: data['volumeInfo']['description'],
+                           thumbnail:,
+                           page_count: data['volumeInfo']['pageCount'],
+                           isbn_10:,
+                           isbn_13:
+                         })
         end
         logger.debug(data['volumeInfo']['industryIdentifiers'])
       end
     end
-    return data_hash
+    data_hash
   end
 
   def book_search(keyword)
@@ -125,18 +126,18 @@ class BooksController < ApplicationController
                       data['volumeInfo']['imageLinks']['thumbnail']
                     end
         data_hash.push({
-                          title: data['volumeInfo']['title'],
-                          author: data['volumeInfo']['authors'],
-                          published_date: data['volumeInfo']['publishedDate'],
-                          publisher: data['volumeInfo']['publisher'],
-                          description: data['volumeInfo']['description'],
-                          thumbnail:,
-                          page_count: data['volumeInfo']['pageCount'],
-                          isbn_10: data['volumeInfo']['industryIdentifiers'][0]['identifier'],
-                          isbn_13: data['volumeInfo']['industryIdentifiers'][1]['identifier']
-                        })
+                         title: data['volumeInfo']['title'],
+                         author: data['volumeInfo']['authors'],
+                         published_date: data['volumeInfo']['publishedDate'],
+                         publisher: data['volumeInfo']['publisher'],
+                         description: data['volumeInfo']['description'],
+                         thumbnail:,
+                         page_count: data['volumeInfo']['pageCount'],
+                         isbn_10: data['volumeInfo']['industryIdentifiers'][0]['identifier'],
+                         isbn_13: data['volumeInfo']['industryIdentifiers'][1]['identifier']
+                       })
       end
     end
-    return data_hash[0]
+    data_hash[0]
   end
 end

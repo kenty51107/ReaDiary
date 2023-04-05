@@ -14,6 +14,10 @@ class RecordsController < ApplicationController
     @new_record = @record.book.records.new
   end
 
+  def edit
+    @record = Record.find(params[:id])
+  end
+
   def create
     # book = current_user.books.find_by(id: record_params[:book_id])
     @new_record = Record.new(record_params)
@@ -25,12 +29,7 @@ class RecordsController < ApplicationController
     end
   end
 
-  def edit
-    @record = Record.find(params[:id])
-  end
-
-  def update
-  end
+  def update; end
 
   private
 

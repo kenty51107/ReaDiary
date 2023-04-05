@@ -36,11 +36,11 @@
   <div class="card ranking-container">
     <h5>登録数が多い書籍</h5>
     <div class="ranking-wrapper">
-      <% @data&.each do |d| %>
+      <% @book_count&.each do |key, value| %>
         <div class="card ranking-item">
-          <%= image_tag d[:thumbnail], class: "ranking-item-img" %>
+          <%= image_tag key[1], class: "ranking-item-img" %>
           <div class="card-body">
-            <p><%= d[:title] %></p>
+            <p><%= key[0] %></p>
           </div>
         </div>
       <% end %>

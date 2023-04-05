@@ -15,7 +15,6 @@ class RegisterBookForm
   validates :isbn_13, presence: true, length: { is: 13 }
   validates :category, presence: true
 
-
   # Formオブジェクトの値の初期化
   def initialize(attributes = nil, book: Book.new, record: Record.new)
     @book = book

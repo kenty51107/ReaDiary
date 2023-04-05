@@ -5,7 +5,7 @@ class RepliesController < ApplicationController
       redirect_to record_path(@reply.record_id), notice: "コメントを投稿しました。"
     else
       flash.notice = "コメントを投稿できませんでした。"
-      redirect_to record_path()
+      redirect_to record_path
     end
   end
 
