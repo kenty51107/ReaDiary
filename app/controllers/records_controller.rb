@@ -24,19 +24,6 @@ class RecordsController < ApplicationController
   end
 
   def update
-    # rec = record_edit_params.dup
-    # if rec[:done_up_to] == @record.book.page_count.to_s
-    #   rec[:finished] = true
-    #   if @record.update(rec)
-    #     flash.now.notice = 'お疲れ様でした。'
-    #   else
-    #     render 'edit', status: :unprocessable_entity
-    #   end
-    # elsif @record.update(record_edit_params)
-    #   flash.now.notice = '読書記録を更新しました。'
-    # else
-    #   render 'edit', status: :unprocessable_entity
-    # end
   end
 
   private
