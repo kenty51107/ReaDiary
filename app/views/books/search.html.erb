@@ -1,0 +1,44 @@
+<% if @results.present? %>
+  <div class="search-container" id="modal">
+      <% @results&.each do |result| %>
+          <div class="grid-item">
+            <modal-window>
+              <template v-slot:modal-img><%= image_tag result[:thumbnail], class: "modal-img" %></template>
+              <template v-slot:modal-title><%= result[:title] %></template>
+              <template v-slot:form>
+                <%= form_with model: @register_book_form, url: books_path, local: true do |f| %>
+                  <%= f.label :title, "タイトル", class: "book-form-label" %>
+                  <%= f.text_field :title, class: "form-control book-form", value: result[:title] %>
+
+                  <%= f.label :author, "著者", class: "book-form-label" %>
+                  <%= f.text_field :author, class: "form-control book-form", value: result[:author] %>
+                  
+                  <%= f.label :title, "ページ数", class: "book-form-label" %>
+                  <%= f.text_field :page_count, class: "form-control book-form", value: result[:page_count] %>
+
+                  <%= f.label :publisher, "出版社", class: "book-form-label" %>
+                  <%= f.text_field :publisher, class: "form-control book-form", value: result[:publisher] %>
+
+                  <%= f.label :published_date, "発行日", class: "book-form-label" %>
+                  <%= f.date_field :published_date, class: "form-control book-form", value: result[:published_date] %>
+
+                  <%= f.hidden_field :description, value: result[:description] %>
+                  <%= f.hidden_field :thumbnail, value: result[:thumbnail] %>
+                  <%= f.hidden_field :isbn_10, value: result[:isbn_10] %>
+                  <%= f.hidden_field :isbn_13, value: result[:isbn_13] %>
+                  <%= f.hidden_field :done_up_to, value: 0 %>
+                  <%= f.hidden_field :finished, value: 'false' %>
+                  <%= f.hidden_field :category, value: "D" %>
+                  <%= f.hidden_field :content, value: "「#{result[:title]}」の読書を開始しました" %>
+                  <br>
+                    <%= f.submit "読書を開始しよう", class: "btn btn-primary" %>
+                    &ensp;
+                    <%= link_to "本の詳細を見る", detail_books_path(isbn_10: result[:isbn_10]), class: "btn btn-primary" %>
+                <% end %>
+              </template>
+            </modal-window>
+          </div>
+      <% end %>
+    </div>
+  <%= paginate @results %>
+<% end %>

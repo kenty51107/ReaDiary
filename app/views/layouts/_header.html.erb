@@ -7,7 +7,6 @@
     </div>
 
     <div class="search-box">
-      <% if false %>
       <% @placeholder = "著者名・作品名" %>
       <% @id = "header-item" %>
       <% unless flash[:error].nil? %>
@@ -18,7 +17,6 @@
         <%= f.search_field :search, class: "form-control", id: "header-search-field", placeholder: @placeholder %>
         <%= f.submit "検索", class: "btn btn-outline-light" %>
         <% flash[:error] = nil %>
-      <% end %>
       <% end %>
     </div>
     <div class="header-nav">

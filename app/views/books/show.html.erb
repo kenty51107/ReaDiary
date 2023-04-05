@@ -1,0 +1,12 @@
+<div class="book-info-top">
+  <div class="book-info-image">
+    <%= image_tag @book.thumbnail %>
+  </div>
+  <div class="book-info-title">
+  </div>
+</div>
+<div class="book-info-left">
+  <%= turbo_frame_tag 'detail' do %>
+    <%= render 'books/detail' %>
+  <% end %>
+</div>

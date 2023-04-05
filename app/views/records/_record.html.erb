@@ -1,0 +1,12 @@
+<div class="card record-card">
+  <div class="card-header record-header">
+    <%= record.book.user.name %>
+    <%= time_ago_in_words(record.created_at) %>
+  </div>
+  <div class="card-body record-body">
+    <p><%= record.content %></p>
+    <div class="record-footer">
+      <%= record.created_at.strftime("%m/%d %H:%M") %>
+    </div>
+  </div>
+</div>

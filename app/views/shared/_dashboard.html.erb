@@ -1,0 +1,13 @@
+<div class="card status-container">
+  <div class="profile">
+    <%= image_tag "default.png", class: "profile-img" %>
+  </div>
+</div>
+
+<div class="card controller">
+  <ul>
+    <li><%= link_to "本棚", current_user %></li>
+    <li><%= link_to "タイムライン", records_path %></li>
+    <li><%= link_to "友達", users_path %></li>
+  </ul>
+</div>

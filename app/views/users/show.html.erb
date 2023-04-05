@@ -1,1 +1,57 @@
-user page
+<%= render 'shared/dashboard' %>
+
+<div class="main">
+  <div id="list">
+    <div class="card text-center" id="list-container">
+      <div id="list-header">
+        <ul>
+          <li @click="select('reading')" v-bind:class="{'active': show == 'reading'}" class="tab-label">読書中</li>
+          <li @click="select('finished')" v-bind:class="{'active': show == 'finished'}" class="tab-label">既読</li>
+        </ul>
+      </div>
+      <div class="card-body" id="bookshelf-body">
+        <%#-----------読書中-------------%>
+        <div v-if="show == 'reading'" class="tab-content">
+          <div class="th-container">
+            <ul>
+              <li>進捗</li>
+              <li>タイトル</li>
+              <li>著者</li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="td-container">
+            <%= render partial: 'books/book', collection: @reading, as: :book %>
+          </div>
+        </div>
+        <%#-----------既読-------------%>
+        <div v-else-if="show == 'finished'" class="tab-content">
+          <div class="th-container">
+            <ul>
+              <li>進捗</li>
+              <li>タイトル</li>
+              <li>著者</li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="td-container">
+            <%= render partial: 'books/finished', collection: @finished, as: :finished %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if false %>
+  <div class="card text-center" id="timeline-container">
+    <header id="post-container-header">
+      <p>投稿一覧</p>
+    </header>
+    <%= turbo_frame_tag "records-page-#{@records.current_page}" do %>
+      <%= render @records %>
+
+      <%= turbo_frame_tag "records-page-#{@records.next_page}", loading: :lazy, src: path_to_next_page(@records) %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

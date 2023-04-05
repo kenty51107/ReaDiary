@@ -192,31 +192,32 @@ body {
        }
      }
    }
-
- }
-
- #timeline-container {
-   flex: 3;
-   height: 800px;
-   margin-right: 15px;
-   overflow: hidden;
-   overflow-y: scroll;
-
-   #post-container-header {
-     background-color: $header-color;
-   }
-
-   .card-wrapper {
-     min-height: 150px;
-     
-     .post-header {
-     }
-   }
  }
 }
 
 
+// record/index.html.erb タイムライン
+.timeline {
+  .record-card {
+    width: 20rem;
+    margin: 10px auto;
 
+    .record-header {
+      background-color: $header-color;
+      color: $header-font-color;
+    }
+    
+    .record-body {
+      position: relative;
+
+      .record-footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
 
 
 
@@ -227,172 +228,172 @@ body {
 // _book.html.erb, _form.html.erb, _record.html.erb
 
 .tr-container {
-   height: calc(95% / 5);
-   min-height: 150px;
-   border-top: 1px solid $header-color;
-   position: relative;
+  height: calc(95% / 5);
+  min-height: 150px;
+  border-top: 1px solid $header-color;
+  position: relative;
 
- .tr-content {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  .tr-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-   .td-title {
-     display: flex;
-     gap: 10px;
+    .td-title {
+      display: flex;
+      gap: 10px;
 
-     img {
-       width: 80px;
-       height: 120px;
-       margin: 10px 0;
-     }
+      img {
+        width: 80px;
+        height: 120px;
+        margin: 10px 0;
+      }
      
-     p {
-       align-self: center;
-     }
+      p {
+        align-self: center;
+      }
 
-     .input_field {
-       display: flex;
-       flex-direction: row;
-       align-items: center;
+      .input_field {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-       &:nth-child(1) {
-         flex: 2;
-       }
-       &:nth-child(2) {
-         flex: 8;
-       }
-     }
-   }
+        &:nth-child(1) {
+          flex: 2;
+        }
+        &:nth-child(2) {
+          flex: 8;
+        }
+      }
+    }
 
-   .td-content {
-     text-align: center;
-     &:nth-child(1) {
-       flex: 5;
-     }
-     &:nth-child(2) ,&:nth-child(3) {
-       flex: 6;
-     }
-     &:nth-child(4) {
-       flex: 3;
-     }
+    .td-content {
+      text-align: center;
+      &:nth-child(1) {
+        flex: 5;
+      }
+      &:nth-child(2) ,&:nth-child(3) {
+        flex: 6;
+      }
+      &:nth-child(4) {
+        flex: 3;
+      }
 
-     a {
-       margin: 5px 0;
-     }
-   }
+      a {
+        margin: 5px 0;
+      }
+    }
 
-   .chart-content {
-     position: relative;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     svg {
-       width: 80px;
-       height: 80px;
-       transform: rotate(-90deg);
-     }
+    .chart-content {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 80px;
+        height: 80px;
+        transform: rotate(-90deg);
+      }
 
-     circle {
-       fill: none;
-       stroke-width: 10;
-       stroke: #f3f3f3;
-       stroke-dasharray: 220;
-       stroke-dashoffset: 0;
-       stroke-linecap: round;
+      circle {
+        fill: none;
+        stroke-width: 10;
+        stroke: #f3f3f3;
+        stroke-dasharray: 220;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
 
-     }
-     .line {
-       stroke: #03a9f4;
-       animation: circleAnime 1s forwards;
-     }
+      }
+      .line {
+        stroke: #03a9f4;
+        animation: circleAnime 1s forwards;
+      }
 
-     @keyframes circleAnime {
-       0% {
-         stroke-dasharray: 0 220;
-       }
-       100% {
-         stroke-dasharray: 220 220;
-       }
-     }
-     .number {
-       position: absolute;
-       .percent {
-         display: block;
-         margin: 0;
-         span {
-           font-size: 1.2em;
-         }
-       }
-       .page-number {
-         display: none;
-         margin: 0;
-         font-size: 0.7em;
-         span {
-           font-size: 1.2em;
-         }
-       }
-     }
-   }
-   .chart-content:hover {
-     .percent {
-       display: none;
-     }
-     .page-number {
-       display: block;
-     }
-   }
- }
+      @keyframes circleAnime {
+        0% {
+          stroke-dasharray: 0 220;
+        }
+        100% {
+          stroke-dasharray: 220 220;
+        }
+      }
+      .number {
+        position: absolute;
+        .percent {
+          display: block;
+          margin: 0;
+          span {
+            font-size: 1.2em;
+          }
+        }
+        .page-number {
+          display: none;
+          margin: 0;
+          font-size: 0.7em;
+          span {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+    .chart-content:hover {
+      .percent {
+        display: none;
+      }
+      .page-number {
+        display: block;
+      }
+    }
+  }
 }
 
 // _record.html.erb
 
 .tr-container.review-container {
-   // height: calc(95% / 5);
-   // border-top: 1px solid $header-color;
-   // position: relative;
+    // height: calc(95% / 5);
+    // border-top: 1px solid $header-color;
+    // position: relative;
 
- .tr-content {
-   // display: flex;
-   // flex-direction: column;
-   // justify-content: space-between;
-   // align-items: center;
+  .tr-content {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
 
-   .td-content {
-     display: flex;
-     flex-direction: column;
+    .td-content {
+      display: flex;
+      flex-direction: column;
 
-     .td-header {
-       display: flex;
-       justify-content: center;
-       position: relative;
+      .td-header {
+        display: flex;
+        justify-content: center;
+        position: relative;
 
-       .td-header-left {
-         position: absolute;
-         left: 0;
-       }
-     }
+        .td-header-left {
+          position: absolute;
+          left: 0;
+        }
+      }
 
-     .content-wrapper {
-       display: flex;
+      .content-wrapper {
+        display: flex;
 
-       .content-left {
-         flex: 1;
-         img {
-           width: 80px;
-           height: 120px;
-         }
-         button {
-           margin-top: 5px;
-         }
-       }
+        .content-left {
+          flex: 1;
+          img {
+            width: 80px;
+            height: 120px;
+          }
+          button {
+            margin-top: 5px;
+          }
+        }
 
-       .content-right {
-         flex: 3;
-       }
-     }
-   }
- }
+        .content-right {
+          flex: 3;
+        }
+      }
+    }
+  }
 }
 
 
@@ -400,59 +401,59 @@ body {
 /* status container */
 
 .status-container {
- margin: 30px;
- height: 40vh;
- min-height: 300px;
- .profile {
-   width: 20%;
-   height: 70%;
+  margin: 30px;
+  height: 40vh;
+  min-height: 300px;
+  .profile {
+    width: 20%;
+    height: 70%;
 
-   .profile-img {
-   }
- }
+    .profile-img {
+    }
+  }
 }
 
 /* ユーザーページ　コントローラー */
 .controller {
- margin: 0 30px 30px 30px;
+  margin: 0 30px 30px 30px;
 
- ul {
-   list-style: none;
-   display: flex;
-   align-items: center;
-   margin: 5px 0;
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
 
-   li {
-     margin: 0 5px;
-     a {
-       text-decoration: none;
-       color: $header-color;
-     }
-   }
- }
+    li {
+      margin: 0 5px;
+      a {
+        text-decoration: none;
+        color: $header-color;
+      }
+    }
+  }
 }
 
 /* コメント　タイムライン */
 .timeline {
- .record-card {
-   width: 30%;
-   min-height: 150px;
- }
+  .record-card {
+    width: 30%;
+    min-height: 150px;
+  }
 }
 
 /* record-edit */
 
 .record-edit-form-wrapper {
- display: flex;
- justify-content: center;
- align-items: center;
- #record-edit-form {
-   width: 80px;
- }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #record-edit-form {
+    width: 80px;
+  }
 
- p {
-   margin: 0;
- }
+  p {
+    margin: 0;
+  }
 }
 
 /* レビュー一覧ページ */
@@ -460,7 +461,7 @@ body {
 /* 本棚　詳しく見る */
 
 .book-info-top {
- display: flex;
+  display: flex;
 
 //  .book-info-title {
    
@@ -469,132 +470,131 @@ body {
 
 
 .book-info-left {
- li {
-   list-style: none;
-   margin: 5px;
+  li {
+    list-style: none;
+    margin: 5px;
 
-   &:nth-child(1) {
-     margin-top: 5px;
-   }
+    &:nth-child(1) {
+      margin-top: 5px;
+    }
 
-   & > h5 {
-     display: inline-block;
-   }
+    & > h5 {
+      display: inline-block;
+    }
 
-   .detail-form {
-     width: 80%;
-     height: 100%;
-     margin-bottom: 5px;
-     display: inline-block;
-   }
- }
+    .detail-form {
+      width: 80%;
+      height: 100%;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+  }
 }
 
 
 /* 検索結果ページ　モーダルウィンドウ */
 .modal-block {
- justify-content: center;
- align-items: center;
- width: 100%;
- height: 100%;
- overflow: auto;
- position: fixed;
- top: 0;
- left: 0;
- z-index:10;
-
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:10;
 }
 
 button{
- width: 300px;
- height: 50px;
- line-height: 50px;
- background-color: #2675BC;
- color: #fff;
- border: transparent;
- transition: .5s;
- cursor: pointer;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #2675BC;
+  color: #fff;
+  border: transparent;
+  transition: .5s;
+  cursor: pointer;
 
- &:hover {
-   opacity: .5;
- }
+  &:hover {
+    opacity: .5;
+  }
 }
 .overlay {
- position: fixed;
- width: 100%;
- height: 100%;
- background-color: rgba(0, 0, 0, .6);
- top: 0;
- left: 0;
- z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .6);
+  top: 0;
+  left: 0;
+  z-index: 10;
 
- .modal-container {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   width: 60%;
-   height: 80%;
+  .modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 80%;
 
-   .modal-header {
-     background-color: $header-color;
-     color: $header-font-color;
-     padding: 5px;
-     border-radius: 5px 5px 0 0;
-     
-   }
+    .modal-header {
+      background-color: $header-color;
+      color: $header-font-color;
+      padding: 5px;
+      border: 0;
+      border-radius: 5px 5px 0 0;
+    }
 
-   .modal-content{
-     width: 100%;
-     height: 100%;
-     background-color: #fff;
-     position: relative;
-     padding: 40px;
-     box-sizing: border-box;
-     border-radius: 0 0 5px 5px;
+    .modal-content{
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      position: relative;
+      padding: 40px;
+      border: 0;
+      border-radius: 0 0 5px 5px;
 
 
-     // モーダルの中身
-     .modal-content-left {
-       margin-bottom: 5px;
-       img {
-         width: 120px;
-         height: 180px;
-       }
-     }
-     .modal-content-right {
-     }
-   }
- }
+      // モーダルの中身
+      .modal-content-left {
+        margin-bottom: 5px;
+        img {
+          width: 120px;
+          height: 180px;
+        }
+      }
+      .modal-content-right {
+      }
+    }
+  }
 }
 
 .fade-enter-active, .fade-leave-active {
- animation-name: fade;
- animation-duration: .3s;
+  animation-name: fade;
+  animation-duration: .3s;
 }
 
 .fade-leave-active {
- animation-direction: reverse;
+  animation-direction: reverse;
 }
 
 @keyframes fade {
- 0% {
-   opacity: 0;
- }
- 100% {
-   opacity: 1;
- }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* top page */
 .toppage-container {
- .top {
-   width: 100%;
-   height: 30vh;
-   background-size: cover;
-   background-position: 50%;
-   background-image: url('toppage-image.jpg');
-   position: relative;
+  .top {
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: 50%;
+    background-image: url('toppage-image.jpg');
+    position: relative;
 
     .top-content {
       height: 100%;
@@ -627,7 +627,6 @@ button{
           }
         }
       }
-     
       span {
         color: $logo-color;
       }
