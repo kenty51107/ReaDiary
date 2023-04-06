@@ -29,6 +29,11 @@
       %>
     </div>
 
+    <div class="field">
+      <%= f.label :image, "プロフィール画像" %><br />
+      <%= f.file_field :image, class: "form-control-sm" %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Sign up", class: "btn btn-primary" %>
     </div>

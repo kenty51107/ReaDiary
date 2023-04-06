@@ -431,14 +431,15 @@ body {
 
 .status-container {
   margin: 30px;
-  height: 40vh;
-  min-height: 300px;
+  height: 300px;
   .profile {
-    width: 20%;
-    height: 70%;
+    width: 150px;
+    height: 200px;
+    margin: 30px;
+  }
 
-    .profile-img {
-    }
+  a {
+    width: 150px;
   }
 }
 
