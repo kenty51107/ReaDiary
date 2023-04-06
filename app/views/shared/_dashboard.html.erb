@@ -6,8 +6,8 @@
 
 <div class="card controller">
   <ul>
-    <li><%= link_to "本棚", current_user %></li>
-    <li><%= link_to "タイムライン", records_path %></li>
-    <li><%= link_to "友達", users_path %></li>
+    <li class="<%= 'active' if current_page?(current_user) %>"><%= link_to "本棚", current_user %></li>
+    <li class="<%= 'active' if current_page?(records_path) %>"><%= link_to "タイムライン", records_path %></li>
+    <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "友達", users_path %></li>
   </ul>
 </div>

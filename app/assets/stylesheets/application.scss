@@ -454,6 +454,10 @@ body {
 
     li {
       margin: 0 5px;
+      
+      &.active {
+        background: linear-gradient(transparent 90%, $header-color 50%);
+      }
       a {
         text-decoration: none;
         color: $header-color;
