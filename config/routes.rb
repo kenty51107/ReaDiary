@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   root to: "static_pages#index"
   resources :books do
     collection do
@@ -7,11 +7,16 @@ Rails.application.routes.draw do
       get :detail
     end
   end
-  resources :users do
-    member do
-      get :following, :followers
-    end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'devise/sessions',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
+  }
+  devise_scope :user do
+    get "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
+  resources :users
   resources :records
   resources :replies
 end

@@ -27,6 +27,7 @@
                   <%= f.submit "ログイン", class: "btn btn-primary" %>
                 </div>
               <% end %>
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, data: { turbo_method: :post }, class: "btn btn-primary" %>
             </div>
           </div>
         </div>
