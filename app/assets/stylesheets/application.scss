@@ -122,72 +122,71 @@ body {
 
 /* ユーザーページ本棚 */
 
-.main {
-  display: flex;
-  justify-content: center;
+#list {
+  flex: 7;
+  #list-container {
+    height: 800px;
+    overflow: hidden;
+    margin: 0px 30px 5px 30px;
 
-  #list {
-    flex: 7;
-    #list-container {
-      height: 800px;
-      overflow: hidden;
-      margin: 0px 30px 5px 30px;
+    #list-header {
+      padding: 0;
+      ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
 
-      #list-header {
-        padding: 0;
-        ul {
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 20px;
-          margin: 0;
+        .tab-label {
+          margin: 0 2px;
+          padding: 10px 20px;
 
-          .tab-label {
-            margin: 0 2px;
-            padding: 10px 20px;
-
-            &.active {
-              background-color: $header-color;
-              color: $header-font-color;
-            }
+          &.active {
+            background-color: $header-color;
+            color: $header-font-color;
+          }
+          &#initial {
+            background-color: $header-color;
+            color: $header-font-color;
           }
         }
       }
-      #bookshelf-body {
-        padding: 0;
-        overflow-y: scroll;
+    }
+    #bookshelf-body {
+      padding: 0;
+      overflow-y: scroll;
 
-        .th-container {
-          position: sticky;
-          top: 0;
-          z-index: 10;
-        }
+      .th-container {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
 
-        ul {
-          list-style: none;
-          display: flex;
-          align-items: center;
-          padding: 10px 0;
-          margin: 0;
-          background-color: $header-color;
-          color: $header-font-color;
+      ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        margin: 0;
+        background-color: $header-color;
+        color: $header-font-color;
 
-          li {
-            &:nth-child(1) {
-              flex: 5;
-            }
-            &:nth-child(2) ,&:nth-child(3) {
-              flex: 6;
-            }
-            &:nth-child(4) {
-              flex: 3;
-            }
+        li {
+          &:nth-child(1) {
+            flex: 5;
+          }
+          &:nth-child(2) ,&:nth-child(3) {
+            flex: 6;
+          }
+          &:nth-child(4) {
+            flex: 3;
           }
         }
-        #item-finished, #item-all {
-          display: none;
-        }
+      }
+      #item-finished, #item-all {
+        display: none;
       }
     }
   }
