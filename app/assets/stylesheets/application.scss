@@ -432,14 +432,20 @@ body {
 .status-container {
   margin: 30px;
   height: 300px;
+  position: relative;
   .profile {
     width: 150px;
     height: 200px;
     margin: 30px;
   }
 
-  a {
-    width: 150px;
+  .mypage {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    a {
+      width: 150px;
+    }
   }
 }
 
@@ -687,5 +693,14 @@ button{
         }
       }
     }
+  }
+}
+
+/* relationships/_show_follow.html.erb */
+.follow-container {
+  width: 50%;
+  margin: 30px auto;
+  .follow-card {
+    height: 150px;
   }
 }

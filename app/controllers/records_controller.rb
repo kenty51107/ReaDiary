@@ -1,9 +1,11 @@
 class RecordsController < ApplicationController
   def index
+    @user = User.find(params[:user_id])
     @records = Record.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
+    @user = User.find(params[:id])
     @record = Record.find(params[:id])
     @reply = @record.replies.new
     @replies = Reply.where(record_id: @record.id).order(created_at: :desc)

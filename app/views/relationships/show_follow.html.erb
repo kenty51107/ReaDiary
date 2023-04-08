@@ -1,0 +1,8 @@
+<%= render 'shared/dashboard' %>
+<% @users&.each do |user| %>
+  <div class="follow-container">
+    <div class="card follow-card">
+      <%= link_to user.name, user %>
+    </div>
+  </div>
+<% end %>

@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   resources :users
   resources :records
   resources :replies
+  resources :relationships do
+    member do
+      get :followings
+      get :followers
+    end
+  end
 end

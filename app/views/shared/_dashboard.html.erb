@@ -1,18 +1,33 @@
 <div class="card status-container">
   <div class="profile">
     <% if current_user.image.attached? %>
-      <%= image_tag current_user.image.variant(resize: '150x200').processed %>
+      <%= image_tag @user.image.variant(resize: '150x200').processed %>
     <% else %>
       <%= image_tag "default.png", class: "profile-img" %>
     <% end %>
   </div>
-  <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+  <%= @user.name %>
+  <div class="mypage">
+    <div class="col-md-8">
+      <%= render 'relationships/follow_form' if user_signed_in? %>
+    </div>
+    <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+  </div>
 </div>
 
 <div class="card controller">
   <ul>
     <li class="<%= 'active' if current_page?(current_user) %>"><%= link_to "本棚", current_user %></li>
-    <li class="<%= 'active' if current_page?(records_path) %>"><%= link_to "タイムライン", records_path %></li>
-    <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "友達", users_path %></li>
+    <li class="<%= 'active' if current_page?(records_path) %>"><%= link_to "タイムライン", records_path(user_id: @user.id) %></li>
+    <li class="<%= 'active' if current_page?(followings_relationship_path(@user)) %>">
+      <%= link_to followings_relationship_path(@user) do %>
+        フォロー(<%= @user.following.count %>)
+      <% end %>
+    </li>
+    <li class="<%= 'active' if current_page?(followers_relationship_path(@user)) %>">
+      <%= link_to followers_relationship_path(@user) do %>
+        フォロワー(<%= @user.followers.count %>)
+      <% end %>
+    </li>
   </ul>
 </div>
