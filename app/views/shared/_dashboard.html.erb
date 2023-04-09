@@ -3,7 +3,7 @@
     <% if current_user.image.attached? %>
       <%= image_tag @user.image.variant(resize: '150x200').processed %>
     <% else %>
-      <%= image_tag "default.png", class: "profile-img" %>
+      <%= image_tag "icon.svg", class: "profile-img" %>
     <% end %>
   </div>
   <%= @user.name %>

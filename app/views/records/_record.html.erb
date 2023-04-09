@@ -1,13 +1,19 @@
-<div class="card record-card", style="width: 30rem;">
-  <div class="card-header record-header">
-    <%= record.book.user.name %>
-    <%= time_ago_in_words(record.created_at) %>
-  </div>
-  <div class="card-body record-body">
-    <p><%= record.content %></p>
+<%= link_to record do %>
+  <div class="card record-item">
+    <div class="record-header">
+      <% if record.book.user.image.attached? %>
+        <%= image_tag record.book.user.image.variant(resize: '50x50').processed, class: "round-circle" %>
+      <% else %>
+        <%= image_tag "icon.png", class: "icon" %>
+      <% end %>
+      <%= record.book.user.name %>
+      <%= time_ago_in_words(record.created_at) %>
+    </div>
+    <div class="record-body">
+      <p><%= record.content %></p>
+    </div>
     <div class="record-footer">
       <%= record.created_at.strftime("%m/%d %H:%M") %>
     </div>
   </div>
-  <%= link_to "", record %>
-</div>
+<% end %>
