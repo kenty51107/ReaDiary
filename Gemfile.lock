@@ -98,6 +98,9 @@ GEM
     bootstrap5-kaminari-views (0.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    bootstrap_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     builder (3.2.4)
     capybara (3.39.0)
       addressable
@@ -122,6 +125,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
+    devise-i18n-views (0.3.7)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -320,10 +324,12 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.0.2)
   bootstrap5-kaminari-views (~> 0.0.1)
+  bootstrap_form
   capybara
   debug
   devise
   devise-i18n
+  devise-i18n-views
   dotenv-rails
   faraday
   image_processing (~> 1.2)

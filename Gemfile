@@ -15,11 +15,13 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sassc-rails"
 gem "bootstrap", "~> 5.0.2"
+gem "bootstrap_form"
 gem "kaminari"
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
 gem "faraday"
 gem "devise"
 gem "devise-i18n"
+gem "devise-i18n-views"
 gem "dotenv-rails"
 gem "aws-sdk-s3", require: false
 gem "mini_magick"
