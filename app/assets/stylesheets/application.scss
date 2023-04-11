@@ -19,6 +19,16 @@ body {
   background-color: $body-color;
 }
 
+/* main */
+
+.main {
+  min-height: calc(100vh - 200px);
+}
+
+.test {
+  color: blue;
+}
+
 /* header */
 
 .header {
@@ -90,7 +100,6 @@ body {
 .footer {
   width: 100%;
   height: 150px;
-  bottom: 0;
   background-color: $header-color;
   color: $header-font-color;
 
@@ -679,25 +688,23 @@ button{
   }
 }
 
-  // トップページ　ランキング
-.main {
+// トップページ　ランキング
+.ranking-container {
   margin: 30px;
-  .ranking-container {
-    min-height: 300px;
-    .ranking-wrapper {
-    display: flex;
+  min-height: 300px;
+  .ranking-wrapper {
+  display: flex;
 
-      .ranking-item {
-        width: 8rem;
-        height: 16rem;
-        margin: 5px;
+    .ranking-item {
+      width: 8rem;
+      height: 16rem;
+      margin: 5px;
 
-        .card-body {
+      .card-body {
 
-          p {
-            margin: 0;
-            font-size: 0.7rem;
-          }
+        p {
+          margin: 0;
+          font-size: 0.7rem;
         }
       }
     }
