@@ -1,4 +1,5 @@
 <%= render 'shared/dashboard' %>
+
 <div class="bookshelf-container">
   <div class="bookshelf-tab">
     <ul>
@@ -12,7 +13,7 @@
   </div>
   <div class="bookshelf-body">
 		<div class="books-wrapper">
-      <%= render partial: 'reading_book', collection: @reading_books, as: :book %>
+      <%= render partial: 'finished_book', collection: @finished_books, as: :book %>
 		</div>
 	</div>
 </div>

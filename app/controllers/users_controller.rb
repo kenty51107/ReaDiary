@@ -8,8 +8,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books.all
-    @reading = @user.books.where(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
-    @finished = @user.books.where.not(id: Record.where(finished: false).select(:book_id)).page(params[:page]).per(10)
-    @records = Record.all.order(created_at: :desc).page(params[:page]).per(10)
+    @finished_books = @books.joins(:records).where(records: {finished: true})
+    @reading_books = @books - @finished_books
+  end
+
+  def finished_books
+    @user = User.find(params[:id])
+    @books = @user.books.all
+    @finished_books = @books.joins(:records).where(records: {finished: true})
+    @readings_books = @books - @finished_books
   end
 end

@@ -1,0 +1,53 @@
+<%= turbo_frame_tag latest_record(book) do %>
+  <div class="reading_book">
+    <div class="card">
+      <header>
+        <p>
+          最後の更新:<%= time_ago_in_words(latest_record(book).created_at) %>前
+        </p>
+        <p>
+          読書開始日:<%= first_record(book).created_at.strftime("%m/%d") %>
+        </p>
+      </header>
+      <div class="body">
+        <div class="wrapper">
+          <div class="left-side">
+            <div class="image-content">
+              <%= image_tag book.thumbnail %>
+            </div>
+            <div class="chart-content">
+              <% @percent = calc_percent(book) %>
+              <svg>
+                <circle class="base" cx="40" cy="40" r="35"></circle>
+                <circle class="line" cx="40" cy="40" r="35"
+                  style="stroke-dashoffset: calc(220 - (220 * <%= @percent %>) / 100)">
+                </circle>
+              </svg>
+              <div class="number">
+                <p class="percent"><span><%= @percent %></span>%</p>
+                <p class="page-number"><span><%= "#{latest_record(book).done_up_to}/#{book.page_count}" %><br></span>ページ</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-side">
+            <div class="title-content">
+              <p><%= link_to book.title, book.title %></p>
+              <p>著: <%= book.author %></p>
+              <hr>
+            </div>
+            <div class="status-content">
+            </div>
+            <div class="link-content">
+              <%= link_to "更新", new_record_path(record_id: latest_record(book).id), class: "btn btn-sm btn-outline-primary", data: { turbo_frame: dom_id(Record.new) } %>
+              <br>
+              <%= link_to "削除", book, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "読書記録を削除しますか？" } %>
+              <br>
+              <%= link_to "詳しく見る", book_path(book), class: "btn btn-sm btn-outline-primary book_detail" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

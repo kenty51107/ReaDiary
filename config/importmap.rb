@@ -10,3 +10,4 @@ if Rails.env.development?
 else
   pin "vue", to: "vue--dist--vue.esm-browser.prod.js.js" # @3.2.47
 end
+pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.4/dist/jquery.js"

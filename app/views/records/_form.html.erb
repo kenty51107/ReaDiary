@@ -2,44 +2,33 @@
   <%= form_with model: @new_record do |f| %>
     <%= f.hidden_field :category, value: "無分類"%>
     <%= f.hidden_field :book_id, value: @record.book.id %>
-    <div class="tr-container">
-      <div class="tr-content">
-        <div class="td-content chart-content">
-          <svg>
-            <circle class="base" cx="40" cy="40" r="35"></circle>
-            <circle class="line" cx="40" cy="40" r="35"
-              style="stroke-dashoffset: 220">
-            </circle>
-          </svg>
-          <div class="number">
-            <p class="percent">更新中</p>
-            <p class="page-number">読書記録を<br>記録しよう</p>
-          </div>
-        </div>
-        <div class="td-content td-title">
-          <%= image_tag record.book.thumbnail %>
-          <div class="input_item">
-            <br>
-            <div class="headline">
-              <%= f.text_field :headline, class: 'headline', placeholder: '表題<任意>' %>
+      <div class="post-form-container">
+        <div class="card">
+          <header><p>更新中</p></header>
+          <div class="post-form-wrapper">
+            <div class="post-form">
+              <div class="done-up-to">
+                <strong>どこまで読み終えましたか？(必須)</strong>
+                <div class="form-group">
+                  <p><%= f.number_field :done_up_to, in: record.done_up_to + 1.. record.book.page_count, class: "form-control", value: record.done_up_to %></p>
+                  <p>&nbsp; / <%= record.book.page_count %>ページ</p>
+                </div>
+              </div>
+              <hr>
+              <div class="content">
+                <strong>ここまでの感想（任意）</strong>
+                <br>
+                <br>
+                <%= f.text_area :content, class: 'content', placeholder: 'ex) クライマックスになってすごく盛り上がってきた！！ ' %>
+              </div>
+              <hr>
+              <div class="link-group">
+                <%= f.submit "更新", class: "btn btn-primary" %>
+                <%= link_to "キャンセル", current_user, class: "btn btn-secondary" %>
+              </div>
             </div>
-            <br>
-            <div class="content">
-              <%= f.text_area :content, class: 'content', placeholder: '感想を残そう<任意>' %>
-            </div>
           </div>
-        </div>
-        <div class="td-content">
-          <div class="record-edit-form-wrapper">
-            <%= f.number_field :done_up_to, in: record.done_up_to + 1.. record.book.page_count, class: "form-control", id: "record-edit-form", value: record.done_up_to %>
-            <p>&nbsp; / <%= record.book.page_count %></p>
-          </div>
-        </div>
-        <div class="td-content td-btn">
-          <%= f.submit "登録", class: "btn btn-sm btn-outline-primary" %>
-          <%= link_to "キャンセル", user_path(record.book.user_id), class: "btn btn-sm btn-outline-danger" %>
         </div>
       </div>
-    </div>
   <% end %>
 <% end %>

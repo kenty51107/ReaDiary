@@ -1,21 +1,21 @@
-import { Application } from "@hotwired/stimulus"
+import { Application } from "@hotwired/stimulus";
 
-const application = Application.start()
+const application = Application.start();
 
 // Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
+application.debug = false;
+window.Stimulus = application;
 
-export { application }
+export { application };
 
 import * as Vue from "vue";
 
-const modal = Vue.createApp({})
+const modal = Vue.createApp({});
 
 const { createApp, ref } = Vue;
 
-modal.component('modal-window', {
-	template: `
+modal.component("modal-window", {
+  template: `
 			<div class="grid-item">
 				<div class="img" @click="modalWindow = true"><slot name="modal-img"></slot></div>
 				<div class="text" @click="modalWindow = true">
@@ -38,29 +38,15 @@ modal.component('modal-window', {
 				</transition>
 			</div>
 	`,
-	data() {
-		return {
-			modalWindow: false,
-		}
-	},
-	methods: {
-		stopEvent(envet) {
-			event.stopPropagation()
-		}
-	}
-})
-modal.mount('#modal')
-
-const list = Vue.createApp({
-	data() {
-		return {
-			show: "reading",
-		}
-	},
-	methods: {
-		select: function(tab) {
-			this.show = tab
-		}
-	}
-})
-list.mount('#list')
+  data() {
+    return {
+      modalWindow: false,
+    };
+  },
+  methods: {
+    stopEvent(envet) {
+      event.stopPropagation();
+    },
+  },
+});
+modal.mount("#modal");

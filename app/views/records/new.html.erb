@@ -1,1 +1,5 @@
-<%= render 'form', record: @record %>
+<% if @record.finished %>
+  <%= render 'review_form', record: @record %>
+<% else %>
+  <%= render 'form', record: @record %>
+<% end %>

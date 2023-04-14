@@ -1,0 +1,37 @@
+<%= turbo_frame_tag latest_record(book) do %>
+  <div class="finished_book">
+    <div class="card">
+      <header>
+        <p>
+          読了日: <%= latest_record(book).created_at.strftime("%m/%d") %>
+        </p>
+        <p>
+          読書開始日: <%= first_record(book).created_at.strftime("%m/%d") %>
+        </p>
+      </header>
+      <div class="body">
+        <div class="wrapper">
+          <div class="left-side">
+            <div class="image-content">
+              <%= image_tag book.thumbnail %>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="title-content">
+              <p><%= link_to book.title, book.title %></p>
+              <p>著: <%= book.author %></p>
+              <hr>
+            </div>
+            <div class="status-content">
+            </div>
+            <% if latest_record(book).headline.nil? %>
+              <div class="link-content">
+                <%= link_to "この本のレビューを書きませんか？", new_record_path(record_id: latest_record(book).id) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

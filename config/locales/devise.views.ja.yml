@@ -5,7 +5,8 @@ ja:
         user:
           attributes:
             email:
-              blank: "メールアドレスが入力されていません。"  
+              taken: "このメールアドレスは既に登録済みです。"
+              blank: "メールアドレスが入力されていません。"
             password:
               blank: "パスワードが入力されていません。"
               too_short: "6文字以上入力してください。"

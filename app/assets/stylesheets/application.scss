@@ -33,19 +33,19 @@ body {
 
 .header {
   background-color: $header-color;
-  
+
   .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 50px;
     margin: 0 10px;
-    
+
 
     .header-logo {
       font-size: 1.8em;
       a {
-        color: #fbf6fa; 
+        color: #fbf6fa;
         span {
           // color: #beadba;
           color: $logo-color;
@@ -64,7 +64,7 @@ body {
         gap: 10px;
 
         #header-search-field {
-          background-color: #fbf6fa; 
+          background-color: #fbf6fa;
           width: 300px;
         }
       }
@@ -90,7 +90,7 @@ body {
       display: flex;
       gap: 20px;
       a {
-        color: #fbf6fa; 
+        color: #fbf6fa;
       }
     }
   }
@@ -122,7 +122,7 @@ body {
     justify-content: center;
     font-size: 0.8em;
   }
-  
+
 }
 
 /* search-page */
@@ -159,78 +159,6 @@ body {
 
 
 
-/* ユーザーページ本棚 */
-
-#list {
-  flex: 7;
-  #list-container {
-    height: 800px;
-    overflow: hidden;
-    margin: 0px 30px 5px 30px;
-
-    #list-header {
-      padding: 0;
-      ul {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 20px;
-        margin: 0;
-
-        .tab-label {
-          margin: 0 2px;
-          padding: 10px 20px;
-
-          &.active {
-            background-color: $header-color;
-            color: $header-font-color;
-          }
-          &#initial {
-            background-color: $header-color;
-            color: $header-font-color;
-          }
-        }
-      }
-    }
-    #bookshelf-body {
-      padding: 0;
-      overflow-y: scroll;
-
-      .th-container {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-
-      ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        padding: 10px 0;
-        margin: 0;
-        background-color: $header-color;
-        color: $header-font-color;
-
-        li {
-          &:nth-child(1) {
-            flex: 5;
-          }
-          &:nth-child(2) ,&:nth-child(3) {
-            flex: 6;
-          }
-          &:nth-child(4) {
-            flex: 3;
-          }
-        }
-      }
-      #item-finished, #item-all {
-        display: none;
-      }
-    }
-  }
-}
-
 
 // record/index.html.erb タイムライン
 .timeline {
@@ -258,7 +186,7 @@ body {
       background-color: $header-color;
       color: $header-font-color;
     }
-    
+
     .reply-body {
       position: relative;
 
@@ -278,178 +206,122 @@ body {
 }
 
 
-// _book.html.erb, _form.html.erb, _record.html.erb
+/* record/_form.html.erb record/_review_form.html.erb 星レビュー */
+// クイック更新のフォーム
+.post-form-container {
+  margin-bottom: 20px;
 
-.tr-container {
-  height: calc(95% / 5);
-  min-height: 150px;
-  border-top: 1px solid $header-color;
-  position: relative;
-
-  .tr-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .td-title {
-      display: flex;
-      gap: 10px;
-
-      img {
-        width: 80px;
-        height: 120px;
-        margin: 10px 0;
-      }
-     
-      p {
-        align-self: center;
-      }
-
-      .input_field {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        &:nth-child(1) {
-          flex: 2;
-        }
-        &:nth-child(2) {
-          flex: 8;
-        }
-      }
-    }
-
-    .td-content {
-      text-align: center;
-      &:nth-child(1) {
-        flex: 5;
-      }
-      &:nth-child(2) ,&:nth-child(3) {
-        flex: 6;
-      }
-      &:nth-child(4) {
-        flex: 3;
-      }
-
-      a {
-        margin: 5px 0;
-      }
-    }
-
-    .chart-content {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      svg {
-        width: 80px;
-        height: 80px;
-        transform: rotate(-90deg);
-      }
-
-      circle {
-        fill: none;
-        stroke-width: 10;
-        stroke: #f3f3f3;
-        stroke-dasharray: 220;
-        stroke-dashoffset: 0;
-        stroke-linecap: round;
-
-      }
-      .line {
-        stroke: #03a9f4;
-        animation: circleAnime 1s forwards;
-      }
-
-      @keyframes circleAnime {
-        0% {
-          stroke-dasharray: 0 220;
-        }
-        100% {
-          stroke-dasharray: 220 220;
-        }
-      }
-      .number {
-        position: absolute;
-        .percent {
-          display: block;
-          margin: 0;
-          span {
-            font-size: 1.2em;
-          }
-        }
-        .page-number {
-          display: none;
-          margin: 0;
-          font-size: 0.7em;
-          span {
-            font-size: 1.2em;
-          }
-        }
-      }
-    }
-    .chart-content:hover {
-      .percent {
-        display: none;
-      }
-      .page-number {
-        display: block;
-      }
+  header {
+    background-color: $header-color;
+    color: $header-font-color;
+    p {
+      padding: 5px;
+      margin: 0;
     }
   }
-}
+  .post-form-wrapper {
+    background-color: $gray-200;
+    padding: 10px;
+    .post-form {
+      width: 80%;
+      height: 100%;
+      margin: 0 auto;
+      .done-up-to {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        strong {
+          float: left;
+          align-items: center;
+        }
+        .form-group {
+          input[type=number] {
+            width: 90px;
+            margin: 10px auto;
+          }
+          p {
+            display: inline-block;
+            margin: 0 auto;
+          }
 
-// _record.html.erb
-
-.tr-container.review-container {
-    // height: calc(95% / 5);
-    // border-top: 1px solid $header-color;
-    // position: relative;
-
-  .tr-content {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-    // align-items: center;
-
-    .td-content {
-      display: flex;
-      flex-direction: column;
-
-      .td-header {
+        }
+      }
+      .content {
+        strong {
+          float: left;
+        }
+        textarea {
+          width: 100%;
+          min-height: 100px;
+        }
+      }
+      .link-group {
         display: flex;
         justify-content: center;
-        position: relative;
-
-        .td-header-left {
-          position: absolute;
-          left: 0;
-        }
-      }
-
-      .content-wrapper {
-        display: flex;
-
-        .content-left {
-          flex: 1;
-          img {
-            width: 80px;
-            height: 120px;
-          }
-          button {
-            margin-top: 5px;
-          }
-        }
-
-        .content-right {
-          flex: 3;
-        }
+        gap: 30px;
       }
     }
   }
 }
 
+// レビューのフォーム
+.review-form-container {
+  margin-bottom: 20px;
 
+  header {
+    background-color: $header-color;
+    color: $header-font-color;
+    p {
+      padding: 5px;
+      margin: 0;
+    }
+  }
+  .post-form-wrapper {
+    background-color: $gray-200;
+    padding: 10px;
+    .post-form {
+      width: 80%;
+      height: 100%;
+      margin: 0 auto;
+      .content {
+        strong {
+          float: left;
+        }
+        input[type=text] {
+          width: 100%;
+        }
+        textarea {
+          width: 100%;
+          min-height: 100px;
+        }
+        .label {
+          width: 70px;
+          height: 30px;
+          margin: 0;
+        }
+        .rating-container {
+          width: 150px;
+          height: 50px;
+          white-space: nowrap;
+        }
+      }
+      .link-group {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+      }
+    }
+  }
+}
+
+// 星レビューのフォーム
+.rating {
+  input[type=range] {
+    opacity: 0.1;
+  }
+}
+
+/* record/_form.html.erb record/_review_form.html.erb */ // ここまで
 
 /* status container */
 
@@ -485,7 +357,7 @@ body {
 
     li {
       margin: 0 5px;
-      
+
       &.active {
         background: linear-gradient(transparent 90%, $header-color 50%);
       }
@@ -528,7 +400,7 @@ body {
   display: flex;
 
 //  .book-info-title {
-   
+
 //  }
 }
 
@@ -625,8 +497,6 @@ button{
           width: 120px;
           height: 180px;
         }
-      }
-      .modal-content-right {
       }
     }
   }
@@ -733,9 +603,186 @@ button{
     h2 {
       text-align: center;
     }
-    
+
     input[type="submit"] {
       background-color: $header-color;
     }
   }
 }
+
+/* user/show.html.erb user/finished_books.html.erb */
+// 本棚
+.bookshelf-container {
+  margin: 30px auto;
+  width: 50%;
+
+  .bookshelf-tab {
+    ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+
+      li {
+        background-color: darkgray;
+        padding: 10px 50px;
+        margin-right: 5px;
+        border-radius: 5px 5px 0 0;
+        color: $dark;
+      }
+
+      & .active {
+        background-color: #fff;
+        color: $header-color;
+        border-top: 5px solid $header-color;
+      }
+    }
+  }
+
+  .bookshelf-body {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 0 5px 5px 5px;
+    .books-wrapper {
+      min-height: 500px;
+
+    }
+  }
+}
+
+/* users/_reaging_book.html.erb users/_finished_book.html.erb 本棚 */
+// reading_book
+.reading_book {
+  margin-bottom: 20px;
+  header {
+    display: flex;
+    gap: 50px;
+    background-color: $header-color;
+    color: $header-font-color;
+    align-items: center;
+    p {
+      margin: 5px;
+    }
+  }
+
+  .body {
+    background-color: $gray-200;
+    min-height: 250px;
+    .wrapper {
+      display: flex;
+      margin: 10px;
+
+      .right-side {
+        margin: 0 10px;
+
+        a {
+          margin: 5px;
+        }
+      }
+
+      .image-content {
+        img {
+          width: 100px;
+          height: 150px;
+        }
+      }
+    }
+  }
+}
+
+// finished_book
+.finished_book {
+  margin-bottom: 20px;
+  header {
+    display: flex;
+    gap: 50px;
+    background-color: $header-color;
+    color: $header-font-color;
+    align-items: center;
+    p {
+      margin: 5px;
+    }
+  }
+
+  .body {
+    background-color: $gray-200;
+    min-height: 250px;
+    .wrapper {
+      display: flex;
+      margin: 10px;
+
+      .right-side {
+        margin: 0 10px;
+      }
+      .image-content {
+        img {
+          width: 100px;
+          height: 150px;
+        }
+      }
+    }
+  }
+}
+
+// 本棚　読書進捗円グラフ
+.chart-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+  }
+
+  circle {
+    fill: none;
+    stroke-width: 10;
+    stroke: #f3f3f3;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+
+  }
+  .line {
+    stroke: #03a9f4;
+    animation: circleAnime 1s forwards;
+  }
+
+  @keyframes circleAnime {
+    0% {
+      stroke-dasharray: 0 220;
+    }
+    100% {
+      stroke-dasharray: 220 220;
+    }
+  }
+  .number {
+    position: absolute;
+    .percent {
+      display: block;
+      margin: 0;
+      span {
+        font-size: 1.2em;
+      }
+    }
+    .page-number {
+      display: none;
+      margin: 0;
+      font-size: 0.7em;
+      span {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+.chart-content:hover {
+  .percent {
+    display: none;
+  }
+  .page-number {
+    display: block;
+  }
+}
+/* users/_reaging_book.html.erb users/_finished_book.html.erb 本棚 */ // ここまで

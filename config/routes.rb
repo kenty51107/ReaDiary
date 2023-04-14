@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
-  resources :users
+  resources :users do
+    member do
+      get :finished_books
+    end
+  end
   resources :records
   resources :replies
   resources :relationships do

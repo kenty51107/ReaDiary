@@ -1,0 +1,48 @@
+<%= turbo_frame_tag @record do %>
+  <%= form_with model: @new_record do |f| %>
+    <%= f.hidden_field :category, value: "無分類"%>
+    <%= f.hidden_field :book_id, value: @record.book.id %>
+      <div class="review-form-container">
+        <div class="card">
+          <header><p>レビュー作成</p></header>
+          <div class="post-form-wrapper">
+            <div class="post-form">
+              <div class="content">
+                <div class="label">
+                  <strong>総合評価</strong>
+                </div>
+                <div class="rating-container">
+                  1 <%= f.range_field :rating, in: 1..5, step: 1, list: "rating-list" %> 5
+                  <datalist id="rating-list">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                </div>
+              </div>
+              <hr>
+              <div class="content">
+                <strong>タイトル</strong>
+                <br>
+                <br>
+                <%= f.text_field :headline, class: 'content' %>
+              </div>
+              <hr>
+              <div class="content">
+                <strong>書評</strong>
+                <br>
+                <br>
+                <%= f.text_area :content, class: 'content' %>
+              </div>
+              <hr>
+              <div class="link-group">
+                <%= f.submit "投稿", class: "btn btn-primary" %>
+                <%= link_to "キャンセル", finished_books_user_path(current_user), class: "btn btn-secondary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+<% end %>

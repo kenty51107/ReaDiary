@@ -1,4 +1,4 @@
-<%= turbo_frame_tag finished do %>
+<%= turbo_frame_tag book do %>
   <div class="tr-container">
     <div class="tr-content">
       <div class="td-content chart-content">
@@ -12,12 +12,12 @@
         </div>
       </div>
       <div class="td-content td-title">
-        <%= image_tag finished.thumbnail %>
-        <%= finished.title %>
+        <%= image_tag book.thumbnail %>
+        <%= book.title %>
       </div>
-      <div class="td-content"><%= finished.author %></div>
+      <div class="td-content"><%= book.author %></div>
       <div class="td-content">
-        <%= link_to "詳しく見る", book_path(finished), class: "btn btn-sm btn-outline-primary book_detail" %>
+        <%= link_to "詳しく見る", book_path(book), class: "btn btn-sm btn-outline-primary book_detail" %>
       </div>
     </div>
   </div>
