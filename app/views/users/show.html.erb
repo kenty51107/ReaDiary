@@ -3,7 +3,7 @@
   <div class="bookshelf-tab">
     <ul>
       <%= link_to @user do %>
-				<li class="<%= 'active' if current_page?(current_user) %>">読書中</li>
+				<li class="<%= 'active' if current_page?(@user) %>">読書中</li>
 			<% end %>
 			<%= link_to finished_books_user_path do %>
 				<li class="<%= 'active' if current_page?(finished_books_user_path) %>">読了</li>

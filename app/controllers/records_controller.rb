@@ -5,7 +5,6 @@ class RecordsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @record = Record.find(params[:id])
     @reply = @record.replies.new
     @replies = Reply.where(record_id: @record.id).order(created_at: :desc)
