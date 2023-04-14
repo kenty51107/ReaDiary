@@ -17,16 +17,15 @@ Rails.application.routes.draw do
     get "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   resources :users do
+    resources :records, only: [:index, :show]
     member do
       get :finished_books
+      get :followings
+      get :followers
     end
   end
   resources :records
   resources :replies
   resources :relationships do
-    member do
-      get :followings
-      get :followers
-    end
   end
 end

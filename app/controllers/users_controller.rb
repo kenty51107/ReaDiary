@@ -18,4 +18,16 @@ class UsersController < ApplicationController
     @finished_books = @books.joins(:records).where(records: {finished: true})
     @readings_books = @books - @finished_books
   end
+
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.following
+    render "relationships/show_follow"
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    render 'relationships/show_follow'
+  end
 end

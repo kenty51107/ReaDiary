@@ -18,16 +18,4 @@ class RelationshipsController < ApplicationController
       format.turbo_stream
     end
   end
-
-  def followings
-    @user = User.find(params[:id])
-    @users = @user.following
-    render "show_follow"
-  end
-
-  def followers
-    @user = User.find(params[:id])
-    @users = @user.followers
-    render 'show_follow'
-  end
 end
