@@ -599,8 +599,8 @@ button{
   }
 }
 
-/* devise/sessions/new.html.erb */
-// ログインページ
+/* devise/sessions/new.html.erb devise/registration/new, edit.html.erb */
+// ログインページ ユーザー登録ページ ユーザー編集ページ
 .form-container {
   width: 50%;
   max-width: 500px;
@@ -612,9 +612,22 @@ button{
     h2 {
       text-align: center;
     }
-
     input[type="submit"] {
       background-color: $header-color;
+      color: $header-font-color;
+      border: $gray-900;
+    }
+
+    .link-group {
+      display: flex;
+      justify-content: space-between;
+      .left {
+        input[type="submit"], a {
+          background-color: $header-color;
+          color: $header-font-color;
+          border: $gray-900;
+        }
+      }
     }
   }
 }
