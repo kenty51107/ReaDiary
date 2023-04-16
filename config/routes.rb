@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     get "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    get "users/guest_sign_in_to_timeline", to: "users/sessions#guest_sign_in_to_timeline"
   end
   resources :users do
     resources :records, only: [:index, :show]
@@ -26,6 +27,5 @@ Rails.application.routes.draw do
   end
   resources :records
   resources :replies
-  resources :relationships do
-  end
+  resources :relationships
 end

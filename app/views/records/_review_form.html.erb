@@ -2,6 +2,7 @@
   <%= form_with model: @new_record do |f| %>
     <%= f.hidden_field :category, value: "無分類"%>
     <%= f.hidden_field :book_id, value: @record.book.id %>
+    <%= f.hidden_field :status, value: 1 %>
       <div class="review-form-container">
         <div class="card">
           <header><p>レビュー作成</p></header>
@@ -9,7 +10,7 @@
             <div class="post-form">
               <div class="content">
                 <div class="label">
-                  <strong>総合評価</strong>
+                  <strong>総合評価(必須)</strong>
                 </div>
                 <div class="rating-container">
                   1 <%= f.range_field :rating, in: 1..5, step: 1, list: "rating-list" %> 5
@@ -23,14 +24,14 @@
               </div>
               <hr>
               <div class="content">
-                <strong>タイトル</strong>
+                <strong>タイトル(必須)</strong>
                 <br>
                 <br>
                 <%= f.text_field :headline, class: 'content' %>
               </div>
               <hr>
               <div class="content">
-                <strong>書評</strong>
+                <strong>書評(必須)</strong>
                 <br>
                 <br>
                 <%= f.text_area :content, class: 'content' %>

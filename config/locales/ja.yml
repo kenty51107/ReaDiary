@@ -6,6 +6,8 @@ ja:
           attributes:
             category:
               blank: "カテゴリーが空欄です。"
+            page_count:
+              blank: "書籍のページ数が空です。"
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"
@@ -70,6 +72,10 @@ ja:
         updated_at: 更新日
         name: "名前"
         image: "プロフィール画像"
+      record:
+        done_up_to: ""
+        content: ""
+        rating: ""
     models:
       user: ユーザー
   devise:

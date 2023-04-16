@@ -8,12 +8,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    # フォームオブジェクトにはuniquenessのバリデーションを与えられない
-    # 個々のモデルに与える方法しかない
-    # 現状放置
+    logger.debug("################1test")
     @register_book_form = RegisterBookForm.new(book_params)
+    logger.debug("################2test")
     if @register_book_form.valid?
+      logger.debug("################3test")
       @register_book_form.save
+      logger.debug("################4test")
       redirect_to user_path(current_user.id), notice: "読書を開始しよう"
     else
       flash.now[:alert] = "保存失敗"
@@ -56,7 +57,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:register_book_form).permit(
       :title, :author, :published_date, :publisher, :description, :thumbnail,
-      :page_count, :isbn_10, :isbn_13, :done_up_to, :rating, :finished,
+      :page_count, :isbn_10, :isbn_13, :done_up_to, :rating, :status,
       :category, :headline, :content
     ).merge(user_id: current_user.id)
   end
@@ -78,36 +79,33 @@ class BooksController < ApplicationController
     books_data = JSON.parse(res.body)
     data_hash = []
     books_data['items']&.each do |data|
-      if data['volumeInfo']['industryIdentifiers'].present?
-        unless data['volumeInfo']['industryIdentifiers'][0]['type'] == 'OTHER'
-          isbn_10 = nil
-          isbn_13 = nil
-          data['volumeInfo']['industryIdentifiers'].each do |isbn|
-            case isbn['type']
-            when 'ISBN_10'
-              isbn_10 = isbn['identifier']
-            when 'ISBN_13'
-              isbn_13 = isbn['identifier']
-            end
+      if data['volumeInfo']['industryIdentifiers'].present? && !(data['volumeInfo']['industryIdentifiers'][0]['type'] == 'OTHER')
+        isbn_10 = nil
+        isbn_13 = nil
+        data['volumeInfo']['industryIdentifiers'].each do |isbn|
+          case isbn['type']
+          when 'ISBN_10'
+            isbn_10 = isbn['identifier']
+          when 'ISBN_13'
+            isbn_13 = isbn['identifier']
           end
-          thumbnail = if data['volumeInfo']['imageLinks'].nil?
-                        'noimage.png'
-                      else
-                        data['volumeInfo']['imageLinks']['thumbnail']
-                      end
-          data_hash.push({
-                           title: data['volumeInfo']['title'],
-                           author: data['volumeInfo']['authors'],
-                           published_date: data['volumeInfo']['publishedDate'],
-                           publisher: data['volumeInfo']['publisher'],
-                           description: data['volumeInfo']['description'],
-                           thumbnail:,
-                           page_count: data['volumeInfo']['pageCount'],
-                           isbn_10:,
-                           isbn_13:
-                         })
         end
-        logger.debug(data['volumeInfo']['industryIdentifiers'])
+        thumbnail = if data['volumeInfo']['imageLinks'].nil?
+                      'noimage.png'
+                    else
+                      data['volumeInfo']['imageLinks']['thumbnail']
+                    end
+        data_hash.push({
+                         title: data['volumeInfo']['title'],
+                         author: data['volumeInfo']['authors'],
+                         published_date: data['volumeInfo']['publishedDate'],
+                         publisher: data['volumeInfo']['publisher'],
+                         description: data['volumeInfo']['description'],
+                         thumbnail:,
+                         page_count: data['volumeInfo']['pageCount'],
+                         isbn_10:,
+                         isbn_13:
+                       })
       end
     end
     data_hash

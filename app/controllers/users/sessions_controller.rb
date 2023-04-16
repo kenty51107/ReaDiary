@@ -7,10 +7,18 @@ class Users::SessionsController < Devise::SessionsController
       user.password = "guestuser"
       user.name = "ゲストユーザー"
     end
-    logger.debug("######1")
     sign_in user
-    logger.debug("######2")
     redirect_to user, notice: "ゲストユーザーとしてログインしました。"
+  end
+
+  def guest_sign_in_to_timeline
+    user = User.find_or_create_by(email: "guest@example.com") do |user|
+      # user.password = SecureRandom.urlsafe_base64
+      user.password = "guestuser"
+      user.name = "ゲストユーザー"
+    end
+    sign_in user
+    redirect_to user_records_path(user), notice: "ゲストユーザーとしてログインしました。"
   end
   # before_action :configure_sign_in_params, only: [:create]
 

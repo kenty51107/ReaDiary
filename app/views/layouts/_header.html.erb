@@ -21,13 +21,10 @@
     </div>
     <div class="header-nav">
       <% if current_user %>
-      <% if false %>
-        <%= link_to "レビュー一覧", records_path %>
-        <%= link_to "Users", users_path %>
-      <% end %>
         <%= link_to "User page", user_path(current_user.id) %>
         <%= link_to "Log out", destroy_user_session_path %>
       <% else %>
+        <%= link_to "Sign up", new_user_registration_path %>
         <%= link_to "Log in", new_user_session_path %>
       <% end %>
     </div>

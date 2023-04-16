@@ -529,7 +529,8 @@ button{
   }
 }
 
-/* top page */
+/* static_pages/index.html.erb */
+// トップページ
 .toppage-container {
   .top {
     width: 100%;
@@ -541,56 +542,347 @@ button{
 
     .top-content {
       position: absolute;
-      right: 10%;
+      left: 50%;
       margin: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: $header-font-color;
-
-      h1 {
-        a {
-          color: $header-font-color;
-        }
+      // background-color: rgba(0, 0, 0, 0.5);
+      .text-outline {
+        padding: 0.5em 10px;
+        color: $header-color;
+        font-size: 2em;
+        font-weight: 900;
+        text-shadow:
+          1px 1px 1px $gray-900,
+          -1px -1px 1px $gray-900,
+          -1px 1px 1px $gray-900,
+          1px -1px 1px $gray-900;
       }
-
       p {
-        text-align: right;
+        padding: 0.5em 10px;
       }
+
       .form-link {
         a {
           margin: 20px;
           border: 1px solid $header-font-color;
         }
-
       }
     }
-
   }
 }
 
-// トップページ　ランキング
-.ranking-container {
-  margin: 30px;
-  min-height: 300px;
-  .ranking-wrapper {
-  display: flex;
+// マーケットメッセージ
+.market-messaging-container {
+  width: 80%;
+  margin: 30px auto;
 
-    .ranking-item {
-      width: 8rem;
-      height: 16rem;
-      margin: 5px;
+  h2 {
+    text-align: center;
+  }
+  .market-messaging-list {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    .market-messaging-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0.25em 1em;
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+      }
+      &:before {
+        top: 0;
+        left: 0;
+        border-top: 2px solid $header-color;
+        border-left: 2px solid $header-color;
+      }
+      &:after {
+        bottom: 0;
+        right: 0;
+        border-bottom: 2px solid $header-color;
+        border-right: 2px solid $header-color;
+      }
+      .market-messaging-item-img {
+        width: 150px;
+        height: 150px;
+        background-color: $gray-300;
+        border-radius: 50%;
+        background-color: $gray-300;
+        margin: 10px auto;
+        img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          margin: 0 auto;
 
-      .card-body {
-
+          &:nth-child(1) {
+            object-fit: scale-down;
+          }
+        }
+      }
+      .market-messaging-item-content {
+        margin: 10px;
         p {
           margin: 0;
-          font-size: 0.7rem;
+        }
+        .link {
         }
       }
     }
   }
 }
 
+h2 {
+  text-align: center;
+}
+
+// book-list 本の一覧
+.book-list-container {
+  margin: 30px auto;
+  width: fit-content;
+  height: 500px;
+  .label {
+    width: 100%;
+    height: 50px;
+    strong {
+      font-size: 30px;
+    }
+  }
+  .item-wrapper {
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    .item-card {
+      width: 200px;
+      height: 400px;
+      background-color: $gray-300;
+      border-radius: 5px;
+      position: relative;
+      & .item-header {
+        transition: all .3s;
+      }
+      &:hover .item-header {
+          .link {
+            display: block;
+          }
+      }
+      .triangle {
+        position: absolute;
+        border-bottom: 50px solid transparent;
+        border-left: 50px solid $header-color;
+        z-index: 10;
+      }
+      .index {
+        position: absolute;
+        top: 5px;
+        left: 8px;
+        color: $header-font-color;
+        z-index: 11;
+      }
+      .item-header {
+        width: 200px;
+        height: 250px;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        z-index: 1;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+        .link {
+          position: absolute;
+          bottom: 10%;
+          left: 25%;
+          display: none;
+          button {
+            width: 100px;
+            height: 30px;
+            color: $header-font-color;
+            background-color: $header-color;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid $header-font-color;
+          }
+        }
+      }
+      .item-body {
+        height: 150px;
+        position: relative;
+        p {
+          margin: 0 10px;
+          color: #000;
+        }
+        .registration-number {
+          position: absolute;
+          display: flex;
+          bottom: 0;
+          right: 0;
+          margin: 5px;
+          font-size: .8rem;
+          dt {
+            height: 100%;
+            background-color: $header-color;
+            color: $header-font-color;
+            border-radius: 3px 0 0 3px;
+            padding: 0 3px;
+          }
+          dd {
+            height: 100%;
+            background-color: $header-font-color;
+            color: $header-color;
+            border-radius: 0 3px 3px 0;
+            padding: 0 3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ブックリスト　プレビューモーダル
+
+// 最新のレビュー・感想
+.latest-review-container {
+  margin: 30px auto;
+  width: fit-content;
+  height: 500px;
+  .label {
+    width: 100%;
+    height: 50px;
+    strong {
+      font-size: 30px;
+    }
+  }
+  .review-wrapper {
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    .review-card {
+      width: 400px;
+      height: 250px;
+      background-color: $gray-300;
+      border-radius: 5px;
+      padding: 10px;
+      position: relative;
+      .review-header {
+        display: flex;
+        .book-img {
+          width: 40px;
+          height: 50px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
+        }
+      }
+      .review-footer {
+        position: absolute;
+        justify-content: space-between;
+        bottom: 0;
+        left: 0;
+        .profile {
+          display: flex;
+          .profile-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: fill;
+            }
+          }
+        }
+      }
+      .time {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+// 星レーティング
+
+.rate{
+  position: relative;
+  display: inline-block;
+}
+.rate:before{
+  content: "★★★★★";
+  color: #ccc;
+}
+
+.rate1:before,
+.rate1:after,
+.rate2:before,
+.rate2:after,
+.rate3:before,
+.rate3:after,
+.rate4:before,
+.rate4:after,
+.rate5:after{
+  position: absolute;
+  top:0;
+  left:0;
+  color: #FFA500;
+  overflow: hidden;
+  height: 24px;
+}
+
+
+.rate .rate1:after {
+	content: "★";
+}
+.rate .rate1-5:after{
+	left: 1em;
+}
+.rate .rate2:after,
+.rate .rate2-5:before{
+	content: "★★";
+}
+.rate .rate2-5:after{
+	left: 2em;
+}
+.rate .rate3:after,
+.rate .rate3-5:before{
+	content: "★★★";
+}
+.rate .rate3-5:after{
+	left: 3em;
+}
+.rate .rate4:after,
+.rate .rate4-5:before{
+	content: "★★★★";
+}
+.rate .rate4-5:after{
+	left: 4em;
+}
+.rate .rate5:after{
+	content: "★★★★★";
+}
+
+
+
+
+/* static_pages/index.html.erb */ // ここまで
+
+
 /* relationships/_show_follow.html.erb */
+// フォロー・フォロワー一覧
 .follow-container {
   width: 50%;
   margin: 30px auto;
@@ -599,16 +891,17 @@ button{
   }
 }
 
+/* relationships/_show_follow.html.erb */ // ここまで
+
+
 /* devise/sessions/new.html.erb devise/registration/new, edit.html.erb */
 // ログインページ ユーザー登録ページ ユーザー編集ページ
 .form-container {
   width: 50%;
   max-width: 500px;
   margin: 30px auto;
-
   .form-item {
     margin: 20px;
-
     h2 {
       text-align: center;
     }
@@ -617,7 +910,6 @@ button{
       color: $header-font-color;
       border: $gray-900;
     }
-
     .link-group {
       display: flex;
       justify-content: space-between;
@@ -631,6 +923,8 @@ button{
     }
   }
 }
+/* devise/sessions/new.html.erb devise/registration/new, edit.html.erb */ // ここまで
+
 
 /* user/show.html.erb user/finished_books.html.erb */
 // 本棚

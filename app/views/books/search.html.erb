@@ -43,7 +43,7 @@
                   <%= f.hidden_field :isbn_10, value: result[:isbn_10] %>
                   <%= f.hidden_field :isbn_13, value: result[:isbn_13] %>
                   <%= f.hidden_field :done_up_to, value: 0 %>
-                  <%= f.hidden_field :finished, value: 'false' %>
+                  <%= f.hidden_field :status, value: 0 %>
                   <%= f.hidden_field :content, value: "「#{result[:title]}」の読書を開始しました" %>
                   <br>
                     <%= f.submit "読書を開始しよう", class: "btn btn-primary" %>

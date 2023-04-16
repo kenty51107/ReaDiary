@@ -1,0 +1,14 @@
+<div class="toppage-container">
+  <div class="top">
+    <div class="top-content">
+      <h1><%= link_to "ReaDiaryとは", "#" %></h1>
+      <p>読書記録をつけて、読書を楽しもう</p>
+      <div class="form-link">
+        <%= link_to "アカウント登録", new_user_registration_path, class: "btn btn-success btn-sm" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-success btn-sm" %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, data: { turbo_method: :post }, class: "btn btn-success btn-sm" %>
+      </div>
+    </div>
+  </div>
+</div>
+test

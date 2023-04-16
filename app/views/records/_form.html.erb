@@ -1,7 +1,8 @@
 <%= turbo_frame_tag @record do %>
-  <%= form_with model: @new_record do |f| %>
+  <%= bootstrap_form_with model: @new_record do |f| %>
     <%= f.hidden_field :category, value: "無分類"%>
     <%= f.hidden_field :book_id, value: @record.book.id %>
+    <%= f.hidden_field :status, value: 0 %>
       <div class="post-form-container">
         <div class="card">
           <header><p>更新中</p></header>

@@ -1,28 +1,169 @@
 <div class="toppage-container">
   <div class="top">
     <div class="top-content">
-      <h1><%= link_to "ReaDiaryとは", "#" %></h1>
-      <p>読書記録をつけて、読書を楽しもう</p>
+      <h2 class="text-outline">楽しかった気持ちも記録しよう</h2>
+      <p>ReaDiaryは読書を通して交流を深めるSNSです</p>
       <div class="form-link">
-        <%= link_to "アカウント登録", new_user_registration_path, class: "btn btn-success btn-sm" %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-success btn-sm" %>
         <%= link_to "ゲストログイン", users_guest_sign_in_path, data: { turbo_method: :post }, class: "btn btn-success btn-sm" %>
       </div>
     </div>
   </div>
 </div>
-<div class="ranking-container">
-  <div class="card">
-    <h5>登録数が多い書籍</h5>
-    <div class="ranking-wrapper">
-      <% @book_count&.each do |key, value| %>
-        <div class="card ranking-item">
-          <%= image_tag key[1], class: "ranking-item-img" %>
-          <div class="card-body">
+
+<div class="market-messaging-container">
+  <h2>ReaDiaryでできること</h2>
+  <div class="market-messaging-list">
+    <div class="market-messaging-item">
+      <div class="market-messaging-item-img">
+        <%= image_tag "market-messaging1.png", class: "serach_bar" %>
+      </div>
+      <div class="market-messaging-item-content">
+        <h3>本を探す</h3>
+        <p>
+          google books api経由で、<br>
+          お探しの本の情報を<br>得ることができます。
+        </p>
+      </div>
+    </div>
+    <div class="market-messaging-item">
+      <div class="market-messaging-item-img">
+        <%= image_tag "market-messaging2.png" %>
+      </div>
+      <div class="market-messaging-item-content">
+        <h3>読書記録をつける</h3>
+        <p>
+          読書の進捗状況を記録できます。<br>
+          読書習慣をつけて<br>
+          足跡をのこそう！
+        </p>
+        <div class="link">
+          <%= link_to "本棚をみてみる", users_guest_sign_in_path, data: { turbo_method: :post }, class: "btn btn-success btn-sm" %>
+        </div>
+      </div>
+    </div>
+    <div class="market-messaging-item">
+      <div class="market-messaging-item-img">
+        <%= image_tag "market-messaging3.png" %>
+      </div>
+      <div class="market-messaging-item-content">
+        <h3>感想を共有する</h3>
+        <p>
+          本の感想を投稿できます。<br>
+          みんなの感想を見て、<br>
+          本を選ぼう！
+        </p>
+        <div class="link">
+          <%= link_to "タイムライン", users_guest_sign_in_to_timeline_path, data: { turbo_method: :post }, class: "btn btn-success btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div id="book-list">
+  <h2>ランクングやレビューからも本を探そう！</h2>
+  <div class="book-list-container">
+    <div class="label">
+      <strong>登録数が上位の本</strong>
+    </div>
+    <div class="item-wrapper">
+      <% @book_lists&.each.with_index(1) do |(key, value), index| %>
+        <%= link_to detail_books_path(isbn_10: key[3]) do %>
+          <div class="item-card">
+            <span class="triangle"></span>
+            <span class="index"><%= index %></span>
+            <div class="item-header">
+              <%= image_tag key[1], class: "item-img" %>
+              <div class="link">
+                <button class="btn btn-sm">プレビュー</button>
+              </div>
+            </div>
+            <div class="item-body">
+              <p><%= key[0] %></p>
+              <dl class="registration-number">
+                <dt class="registration-number-title">登録数</dt>
+                <dd class="registration-number-content"><%= value %></dd>
+              </dl>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="book-list-container">
+    <div class="label">
+      <strong>高評価な本</strong>
+    </div>
+    <div class="item-wrapper">
+      <% @book_lists&.each.with_index(1) do |(key, value), index| %>
+        <div class="item-card">
+          <span class="triangle"></span>
+          <span class="index"><%= index %></span>
+          <div class="item-header">
+            <%= image_tag key[1], class: "item-img" %>
+            <div class="link">
+              <button class="btn btn-sm">プレビュー</button>
+            </div>
+          </div>
+          <div class="item-body">
             <p><%= key[0] %></p>
+            <dl class="registration-number">
+              <dt class="registration-number-title">登録数</dt>
+              <dd class="registration-number-content"><%= value %></dd>
+            </dl>
           </div>
         </div>
       <% end %>
     </div>
+  </div>
+
+</div>
+
+<div class="latest-review-container">
+  <div class="label">
+    <strong>最新のレビュー・感想</strong>
+  </div>
+  <div class="review-wrapper">
+    <% @latest_reviews&.each do |review| %>
+      <%= link_to review do %>
+        <div class="review-card">
+          <div class="review-header">
+
+            <div class="book-img">
+              <%= image_tag review.book.thumbnail, class: "book-img" %>
+            </div>
+            <div class="book-title">
+              <%= review.book.title %>
+              <br>
+              <div class="rate"><span class="rate<%= review.rating %>"></span></div>
+            </div>
+          </div>
+          <hr>
+          <div class="review-body">
+            <%= review.content %>
+          </div>
+          <div class="review-footer">
+            <div class="profile">
+              <div class="profile-img">
+                <% if review.book.user.image.attached? %>
+                  <%= image_tag review.book.user.image.variant(resize: "50x50") %>
+                <% else %>
+                  <%= image_tag "icon.png" %>
+                <% end %>
+              </div>
+              <div class="profile-name">
+                <%= review.book.user.name %>
+              </div>
+            </div>
+          </div>
+            <div class="time">
+              <%= review.created_at.strftime("%m月%d日") %>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

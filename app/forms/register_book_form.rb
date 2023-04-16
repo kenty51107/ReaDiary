@@ -4,7 +4,7 @@ class RegisterBookForm
   # 使用したい属性を読み書きできるようにしてform_withの引数として利用する
   attr_accessor :user_id, :title, :author, :published_date, :publisher,
                 :description, :thumbnail, :page_count, :isbn_10, :isbn_13, :done_up_to,
-                :rating, :finished, :category, :headline, :content
+                :rating, :status, :category, :headline, :content
 
   # バリデーションの設定
   validates :user_id, presence: true
@@ -29,7 +29,7 @@ class RegisterBookForm
       book = Book.create(user_id:, title:, author:, published_date:, publisher:,
                          description:, thumbnail:, page_count:, isbn_10:, isbn_13:)
       Record.create(book_id: book.id, done_up_to:, rating:,
-                    finished:, category:, headline:, content:)
+                    status:, category:, headline:, content:)
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -53,7 +53,7 @@ class RegisterBookForm
       isbn_13: book.isbn_13,
       done_up_to: record.done_up_to,
       rating: record.rating,
-      finished: record.finished,
+      status: record.status,
       category: record.category,
       headline: record.headline,
       content: record.content
