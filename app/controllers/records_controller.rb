@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @records = Record.all.order(created_at: :desc).page(params[:page]).per(10)
+    @records = Record.where.not(content: '').order(created_at: :desc)
   end
 
   def show
@@ -38,6 +38,15 @@ class RecordsController < ApplicationController
     end
   end
 
+  def show_comment
+    @user = User.find(params[:user_id])
+    @comments = Record.where.not(status: 2).where.not(content: '').order(created_at: :desc)
+  end
+
+  def show_review
+    @user = User.find(params[:user_id])
+    @reviews = Record.where(status: 2).order(created_at: :desc)
+  end
   private
 
   def check_finished?

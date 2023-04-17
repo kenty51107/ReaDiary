@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     get "users/guest_sign_in_to_timeline", to: "users/sessions#guest_sign_in_to_timeline"
   end
   resources :users do
-    resources :records, only: [:index, :show]
+    resources :records, only: [:index, :show] do
+      collection do
+        get :show_comment
+        get :show_review
+      end
+    end
     member do
       get :finished_books
       get :followings

@@ -167,20 +167,32 @@ body {
   a {
     text-decoration: none;
     color: black;
-
     .record-item {
       min-height: 150px;
-
-      .record-header {
-        .icon {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          margin: 10px;
+      position: relative;
+      .record-wrapper {
+        margin: 10px;
+        .record-header {
+          display: flex;
+          justify-content: space-between;
+          font-size: .8em;
+          .header-left {
+            display: flex;
+            .icon {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+          }
+          .header-right {
+            display: flex;
+          }
         }
-      }
-      .record-footer {
-        text-align: right;
+        .record-footer {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
       }
     }
   }
@@ -330,10 +342,9 @@ body {
   }
 }
 
-/* record/_form.html.erb record/_review_form.html.erb */ // ここまで
+/* record/_form.html.erb record/_review_form.html.erb show_comment show_review */ // ここまで
 
-/* status container */
-
+//status container
 .status-container {
   margin: 30px;
   height: 300px;
@@ -354,7 +365,7 @@ body {
   }
 }
 
-/* ユーザーページ　コントローラー */
+//ユーザーページ　コントローラー shared/_dashboard.html.erb shared/_links.html.erb
 .controller {
   margin: 0 30px 30px 30px;
 
@@ -378,7 +389,8 @@ body {
   }
 }
 
-/* コメント　タイムライン */
+// コメント　タイムライン
+// show_comment show_review
 .timeline {
   .record-card {
     width: 30%;
@@ -663,14 +675,6 @@ h2 {
       background-color: $gray-300;
       border-radius: 5px;
       position: relative;
-      & .item-header {
-        transition: all .3s;
-      }
-      &:hover .item-header {
-          .link {
-            display: block;
-          }
-      }
       .triangle {
         position: absolute;
         border-bottom: 50px solid transparent;
@@ -696,21 +700,7 @@ h2 {
           height: 100%;
           object-fit: fill;
         }
-        .link {
-          position: absolute;
-          bottom: 10%;
-          left: 25%;
-          display: none;
-          button {
-            width: 100px;
-            height: 30px;
-            color: $header-font-color;
-            background-color: $header-color;
-            border-radius: 5px;
-            padding: 5px;
-            border: 1px solid $header-font-color;
-          }
-        }
+
       }
       .item-body {
         height: 150px;
@@ -739,6 +729,39 @@ h2 {
             color: $header-color;
             border-radius: 0 3px 3px 0;
             padding: 0 3px;
+          }
+        }
+      }
+      .link {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        z-index: 12;
+        button {
+          width: 100px;
+          height: 30px;
+          color: $header-font-color;
+          background-color: $header-color;
+          border-radius: 5px;
+          padding: 5px;
+          border: 1px solid $header-font-color;
+        }
+        .overlay {
+          z-index: 13;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .content {
+            z-index: 14;
+            width: 50%;
+            padding: 1em;
+            background-color: $header-font-color;
           }
         }
       }
@@ -1107,3 +1130,31 @@ h2 {
 // トップページ
 
 /* static_pages/index.html.erb */ // ここまで
+
+/* books/detail.html.erb */
+.detail-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  .book-detail-container {
+    width: 30%;
+    .book-detail {
+      background-color: $gray-200;
+      border-radius: 5px;
+      padding: 20px;
+      .book-img {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 50%;
+          height: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  .timeline {
+    margin: 0;
+  }
+}

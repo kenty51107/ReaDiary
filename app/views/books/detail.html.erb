@@ -1,31 +1,30 @@
-<div>
-  <%= image_tag @book[:thumbnail] %>
+<div class="detail-container">
+  <div class="book-detail-container">
+    <div class="book-detail">
+      <div class="book-img">
+        <%= image_tag @book[:thumbnail] %>
+      </div>
+      <hr>
+      <h3 style="display:inline;">登録情報</h3>
+      <div class="info">
+        <p>タイトル: <%= @book[:title] %></p>
+        <p>著者: <%= @book[:author].join('') %></p>
+        <p>出版社: <%= @book[:publisher] %></p>
+        <p>出版日: <%= @book[:published_date] %></p>
+        <p>ページ数: <%= @book[:page_count] %></p>
+        <p>ISBN_10: <%= @book[:isbn_10] %></p>
+        <p>ISBN_13: <%= @book[:isbn_13] %></p>
+        <p>説明: <br><%= @book[:description] %></p>
+      </div>
+    </div>
+
+  </div>
+  <div class="timeline">
+    <div class="record-wrapper">
+      <div class="record-header">
+        <h4>関連の投稿</h4>
+      </div>
+      <%= render @records %>
+    </div>
+  </div>
 </div>
-<h3 style="display:inline;">登録情報</h3>
-<ul>
-  <li>
-    <h5>タイトル : &nbsp</h5><span><%= @book[:title] %></span>
-  </li>
-  <li>
-    <h5>著者 : &nbsp</h5><span><%= @book[:author] %></span>
-  </li>
-  <li>
-    <h5>出版社 : &nbsp</h5><span><%= @book[:publisher] %></span>
-  </li>
-  <li>
-    <h5>発売日 : &nbsp</h5><span><%= @book[:published_date] %></span>
-  </li>
-  <li>
-    <h5>ページ数 : &nbsp</h5><span><%= @book[:page_count] %></span>
-  </li>
-  <li>
-    <h5>ISBN 10 : &nbsp</h5><span><%= @book[:isbn_10] %></span>
-  </li>
-  <li>
-    <h5>ISBN 13 : &nbsp</h5><span><%= @book[:isbn_13] %></span>
-  </li>
-  <li id="book-info-desc">
-    <h5>概要 : &nbsp</h5>
-    <div><%= @book[:description] %></div>
-  </li>
-</ul>

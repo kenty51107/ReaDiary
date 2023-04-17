@@ -2,5 +2,5 @@
 
 <div class="timeline">
   <%= render 'shared/record_links' %>
-  <%= render @records %>
+  <%= render partial: 'record', collection: @comments, as: :record %>
 </div>

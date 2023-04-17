@@ -1,19 +1,30 @@
 <%= link_to record do %>
   <div class="card record-item">
-    <div class="record-header">
-      <% if record.book.user.image.attached? %>
-        <%= image_tag record.book.user.image.variant(resize: '50x50').processed, class: "round-circle" %>
-      <% else %>
-        <%= image_tag "icon.png", class: "icon" %>
-      <% end %>
-      <%= record.book.user.name %>
-      <%= time_ago_in_words(record.created_at) %>
-    </div>
-    <div class="record-body">
-      <p><%= record.content %></p>
-    </div>
-    <div class="record-footer">
-      <%= record.created_at.strftime("%m/%d %H:%M") %>
+    <div class="record-wrapper">
+      <div class="record-header">
+        <div class="header-left">
+          <% if record.book.user.image.attached? %>
+            <%= image_tag record.book.user.image.variant(resize: '50x50').processed, class: "round-circle" %>
+          <% else %>
+            <%= image_tag "icon.png", class: "icon" %>
+          <% end %>
+          <div class="info">
+            <%= record.book.user.name %>
+            <br>
+            <%= time_ago_in_words(record.created_at) %>
+          </div>
+        </div>
+        <div class="header-right">
+          <span class="material-symbols-outlined">menu_book</span>
+          <%= record.book.title %>
+        </div>
+      </div>
+      <div class="record-body">
+        <p><%= record.content %></p>
+      </div>
+      <div class="record-footer">
+        <%= record.created_at.strftime("%m/%d %H:%M") %>
+      </div>
     </div>
   </div>
 <% end %>

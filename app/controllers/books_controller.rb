@@ -50,6 +50,7 @@ class BooksController < ApplicationController
   def detail
     @isbn = params[:isbn_10]
     @book = book_search(params[:isbn_10])
+    @records = Record.joins(:book).where(books: { isbn_10: params[:isbn_10] })
   end
 
   private

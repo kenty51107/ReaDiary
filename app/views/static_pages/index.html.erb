@@ -62,7 +62,7 @@
 
 <hr>
 
-<div id="book-list">
+<div id="list">
   <h2>ランクングやレビューからも本を探そう！</h2>
   <div class="book-list-container">
     <div class="label">
@@ -70,15 +70,12 @@
     </div>
     <div class="item-wrapper">
       <% @book_lists&.each.with_index(1) do |(key, value), index| %>
-        <%= link_to detail_books_path(isbn_10: key[3]) do %>
-          <div class="item-card">
+        <div class="item-card">
+          <%= link_to detail_books_path(isbn_10: key[3]) do %>
             <span class="triangle"></span>
             <span class="index"><%= index %></span>
             <div class="item-header">
               <%= image_tag key[1], class: "item-img" %>
-              <div class="link">
-                <button class="btn btn-sm">プレビュー</button>
-              </div>
             </div>
             <div class="item-body">
               <p><%= key[0] %></p>
@@ -87,8 +84,8 @@
                 <dd class="registration-number-content"><%= value %></dd>
               </dl>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -104,9 +101,6 @@
           <span class="index"><%= index %></span>
           <div class="item-header">
             <%= image_tag key[1], class: "item-img" %>
-            <div class="link">
-              <button class="btn btn-sm">プレビュー</button>
-            </div>
           </div>
           <div class="item-body">
             <p><%= key[0] %></p>

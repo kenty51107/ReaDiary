@@ -1,0 +1,15 @@
+<div class="controller">
+  <div class="card">
+    <ul>
+      <li class="<%= 'active' if current_page?(user_records_path(@user)) %>">
+        <%= link_to "全て", user_records_path(@user) %>
+      </li>
+      <li class="<%= 'active' if current_page?(show_comment_user_records_path(@user.id)) %>">
+        <%= link_to "コメント", show_comment_user_records_path(@user.id) %>
+      </li>
+      <li class="<%= 'active' if current_page?(show_review_user_records_path(@user.id)) %>">
+        <%= link_to "レビュー", show_review_user_records_path(@user.id) %>
+      </li>
+    </ul>
+  </div>
+</div>
