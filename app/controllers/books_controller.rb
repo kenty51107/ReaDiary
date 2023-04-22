@@ -8,13 +8,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    logger.debug("################1test")
     @register_book_form = RegisterBookForm.new(book_params)
-    logger.debug("################2test")
     if @register_book_form.valid?
-      logger.debug("################3test")
       @register_book_form.save
-      logger.debug("################4test")
       redirect_to user_path(current_user.id), notice: "読書を開始しよう"
     else
       flash.now[:alert] = "保存失敗"
@@ -118,24 +114,32 @@ class BooksController < ApplicationController
     books_data = JSON.parse(res.body)
     data_hash = []
     books_data['items']&.each do |data|
-      if data['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_10'
-        thumbnail = if data['volumeInfo']['imageLinks'].nil?
-                      'noimage.png'
-                    else
-                      data['volumeInfo']['imageLinks']['thumbnail']
-                    end
-        data_hash.push({
-                         title: data['volumeInfo']['title'],
-                         author: data['volumeInfo']['authors'],
-                         published_date: data['volumeInfo']['publishedDate'],
-                         publisher: data['volumeInfo']['publisher'],
-                         description: data['volumeInfo']['description'],
-                         thumbnail:,
-                         page_count: data['volumeInfo']['pageCount'],
-                         isbn_10: data['volumeInfo']['industryIdentifiers'][0]['identifier'],
-                         isbn_13: data['volumeInfo']['industryIdentifiers'][1]['identifier']
-                       })
+      thumbnail = if data['volumeInfo']['imageLinks'].nil?
+                    'noimage.png'
+                  else
+                    data['volumeInfo']['imageLinks']['thumbnail']
+                  end
+      isbn_10 = nil
+      isbn_13 = nil
+      data['volumeInfo']['industryIdentifiers'].each do |isbn|
+        case isbn['type']
+        when 'ISBN_10'
+          isbn_10 = isbn['identifier']
+        when 'ISBN_13'
+          isbn_13 = isbn['identifier']
+        end
       end
+      data_hash.push({
+                        title: data['volumeInfo']['title'],
+                        author: data['volumeInfo']['authors'],
+                        published_date: data['volumeInfo']['publishedDate'],
+                        publisher: data['volumeInfo']['publisher'],
+                        description: data['volumeInfo']['description'],
+                        thumbnail:,
+                        page_count: data['volumeInfo']['pageCount'],
+                        isbn_10:,
+                        isbn_13:,
+                      })
     end
     data_hash[0]
   end
