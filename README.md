@@ -6,7 +6,7 @@ Web上でも好きな本の話で盛り上がれるような場所を提供す�
 
 # URL
 
-https://readiary.net
+https://www.readiary.net
 <br>
 ゲストログイン機能あり
 
