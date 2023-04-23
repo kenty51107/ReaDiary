@@ -8,15 +8,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books.all
-    @finished_books = @books.joins(:records).where.not(records: { status: 0 })
-    @reading_books = @books - @finished_books
+    @reading_books = @user.books.joins(:records).group(:id).having("MAX(records.status) = 0")
   end
 
   def finished_books
     @user = User.find(params[:id])
     @books = @user.books.all
-    @finished_books = @books.joins(:records).where.not(records: { status: 0 })
-    @readings_books = @books - @finished_books
+    @finished_books = @user.books.joins(:records).where(records: { status: [1, 2] }).distinct
   end
 
   def followings
@@ -30,6 +28,4 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'relationships/show_follow'
   end
-
-
 end

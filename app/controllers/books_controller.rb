@@ -130,16 +130,16 @@ class BooksController < ApplicationController
         end
       end
       data_hash.push({
-                        title: data['volumeInfo']['title'],
-                        author: data['volumeInfo']['authors'],
-                        published_date: data['volumeInfo']['publishedDate'],
-                        publisher: data['volumeInfo']['publisher'],
-                        description: data['volumeInfo']['description'],
-                        thumbnail:,
-                        page_count: data['volumeInfo']['pageCount'],
-                        isbn_10:,
-                        isbn_13:,
-                      })
+                       title: data['volumeInfo']['title'],
+                       author: data['volumeInfo']['authors'],
+                       published_date: data['volumeInfo']['publishedDate'],
+                       publisher: data['volumeInfo']['publisher'],
+                       description: data['volumeInfo']['description'],
+                       thumbnail:,
+                       page_count: data['volumeInfo']['pageCount'],
+                       isbn_10:,
+                       isbn_13:
+                     })
     end
     data_hash[0]
   end

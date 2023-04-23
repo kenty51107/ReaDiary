@@ -47,6 +47,7 @@ class RecordsController < ApplicationController
     @user = User.find(params[:user_id])
     @reviews = Record.where(status: 2).order(created_at: :desc)
   end
+
   private
 
   def check_finished?
