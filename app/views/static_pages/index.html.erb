@@ -95,20 +95,22 @@
       <strong>高評価な本</strong>
     </div>
     <div class="item-wrapper">
-      <% @book_lists&.each.with_index(1) do |(key, value), index| %>
+      <% @highly_rated_books&.each_with_index do |value, index| %>
         <div class="item-card">
-          <span class="triangle"></span>
-          <span class="index"><%= index %></span>
-          <div class="item-header">
-            <%= image_tag key[1], class: "item-img" %>
-          </div>
-          <div class="item-body">
-            <p><%= key[0] %></p>
-            <dl class="registration-number">
-              <dt class="registration-number-title">登録数</dt>
-              <dd class="registration-number-content"><%= value %></dd>
-            </dl>
-          </div>
+          <%= link_to detail_books_path(isbn_10: value[3]) do %>
+            <span class="triangle"></span>
+            <span class="index"><%= index + 1 %></span>
+            <div class="item-header">
+              <%= image_tag value[1], class: "item-img" %>
+            </div>
+            <div class="item-body">
+              <p><%= value[0] %></p>
+              <dl class="registration-number">
+                <div class="rate"><span class="rate<%= generate_rating(value[4]) %>">&nbsp;</span></div>
+                <%= value[4] %>
+              </dl>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
