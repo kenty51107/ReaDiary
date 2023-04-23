@@ -39,11 +39,13 @@
             <div class="status-content">
             </div>
             <div class="link-content">
-              <%= link_to "更新", new_record_path(record_id: latest_record(book).id), class: "btn btn-sm btn-outline-primary", data: { turbo_frame: dom_id(Record.new) } %>
-              <br>
-              <%= link_to "削除", book, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "読書記録を削除しますか？" } %>
-              <br>
-              <%= link_to "詳しく見る", detail_books_path(isbn_10: book.isbn_10), class: "btn btn-sm btn-outline-primary book_detail" %>
+              <% if @user == current_user %>
+                <%= link_to "更新", new_record_path(record_id: latest_record(book).id), class: "btn btn-sm btn-outline-primary", data: { turbo_frame: dom_id(Record.new) } %>
+                <br>
+                <%= link_to "削除", book, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "読書記録を削除しますか？" } %>
+                <br>
+                <%= link_to "詳しく見る", detail_books_path(isbn_10: book.isbn_10), class: "btn btn-sm btn-outline-primary book_detail" %>
+              <% end %>
             </div>
           </div>
         </div>

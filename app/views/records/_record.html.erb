@@ -15,8 +15,14 @@
           </div>
         </div>
         <div class="header-right">
-          <span class="material-symbols-outlined">menu_book</span>
-          <%= record.book.title %>
+          <div class="title">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span><%= record.book.title %></span>
+          </div>
+          <div class="kinds">
+            <span class="material-icons-outlined <%= classfy_attribute(record.status) %>">bookmark</span>
+            <%= classfy_record(record.status) %>
+          </div>
         </div>
       </div>
       <div class="record-body">

@@ -31,6 +31,7 @@ class BooksController < ApplicationController
   end
 
   def search
+    @books = current_user.books.pluck(:isbn_10)
     @register_book_form = RegisterBookForm.new
     if params[:search].blank?
       flash[:error] = "検索ワードを入力して下さい。"
@@ -40,6 +41,8 @@ class BooksController < ApplicationController
   end
 
   def detail
+    @books = current_user.books.pluck(:isbn_10)
+    @register_book_form = RegisterBookForm.new
     @isbn = params[:isbn_10]
     @book = book_search(params[:isbn_10])
     @records = Record.joins(:book).where(books: { isbn_10: params[:isbn_10] })

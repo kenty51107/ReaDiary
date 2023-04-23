@@ -154,12 +154,6 @@ body {
   }
 }
 
-
-
-
-
-
-
 // record/index.html.erb タイムライン
 .timeline {
   width: 40%;
@@ -186,6 +180,22 @@ body {
           }
           .header-right {
             display: flex;
+            flex-direction: column;
+            .title {
+              display: flex;
+            }
+            .kinds {
+              display: flex;
+              justify-content: flex-end;
+
+              .comment {
+                color: $teal-500;
+              }
+
+              .review {
+                color: $indigo-500;
+              }
+            }
           }
         }
         .record-footer {
@@ -225,7 +235,6 @@ body {
     margin: 0 auto;
   }
 }
-
 
 /* record/_form.html.erb record/_review_form.html.erb 星レビュー */
 // クイック更新のフォーム
@@ -344,17 +353,30 @@ body {
 
 /* record/_form.html.erb record/_review_form.html.erb show_comment show_review */ // ここまで
 
-//status container
-.status-container {
-  margin: 30px;
-  height: 300px;
-  position: relative;
-  .profile {
-    width: 150px;
-    height: 200px;
-    margin: 30px;
-  }
 
+//shared/_dashboard.html.erb shared/_links.html.erb
+.status-container {
+  width: 80%;
+  height: fit-content;
+  margin: 30px auto;
+  position: relative;
+  hr {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+    .name {
+      margin: 10px auto;
+    }
+  }
   .mypage {
     position: absolute;
     top: 50%;
@@ -364,37 +386,42 @@ body {
     }
   }
 }
-
-//ユーザーページ　コントローラー shared/_dashboard.html.erb shared/_links.html.erb
 .controller {
-  margin: 0 30px 30px 30px;
+  margin: 30px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 
   ul {
     list-style: none;
     display: flex;
+    gap: 30px;
     align-items: center;
     margin: 5px 0;
-
     li {
       margin: 0 5px;
-
       &.active {
         background: linear-gradient(transparent 90%, $header-color 50%);
       }
       a {
         text-decoration: none;
         color: $header-color;
+        font-size: 1.2rem;
       }
     }
   }
 }
 
+
 // コメント　タイムライン
 // show_comment show_review
 .timeline {
+  width: 100%;
   .record-card {
-    width: 30%;
+    width: 100%;
     min-height: 150px;
+    margin-bottom: 10px;
   }
 }
 
@@ -509,6 +536,7 @@ button{
       padding: 40px;
       border: 0;
       border-radius: 0 0 5px 5px;
+      overflow: auto;
 
 
       // モーダルの中身
@@ -655,8 +683,8 @@ h2 {
 // book-list 本の一覧
 .book-list-container {
   margin: 30px auto;
-  width: fit-content;
-  height: 500px;
+  width: 80%;
+  min-height: 500px;
   .label {
     width: 100%;
     height: 50px;
@@ -666,9 +694,11 @@ h2 {
   }
   .item-wrapper {
     width: fit-content;
+    height: fit-content;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    overflow-x: scroll;
+    overflow-x: auto;
     .item-card {
       width: 200px;
       height: 400px;
@@ -774,8 +804,8 @@ h2 {
 // 最新のレビュー・感想
 .latest-review-container {
   margin: 30px auto;
-  width: fit-content;
-  height: 500px;
+  width: 80%;
+  min-height: 500px;
   .label {
     width: 100%;
     height: 50px;
@@ -785,7 +815,9 @@ h2 {
   }
   .review-wrapper {
     width: fit-content;
+    height: fit-content;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     a {
       text-decoration: none;
@@ -1222,10 +1254,23 @@ h2 {
       .book-img {
         width: 100%;
         height: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
         img {
           width: 50%;
           height: 50%;
           object-fit: cover;
+        }
+      }
+      .link {
+        // モーダルの起動ボタン modal2
+        display: flex;
+        justify-content: center;
+        .start-reading {
+          background-color: $header-color;
+          color: $header-font-color;
+          border-radius: 5px;
         }
       }
     }

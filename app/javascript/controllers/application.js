@@ -50,3 +50,37 @@ modal.component("modal-window", {
   },
 });
 modal.mount("#modal");
+
+const modal2 = Vue.createApp({});
+
+modal2.component("modal-window", {
+  template: `
+		<button @click="modalWindow = true" class="btn btn-sm start-reading">この本を読む</button>
+		<transition name="fade">
+			<div class="overlay" v-show="modalWindow" @click="modalWindow = false">
+				<div class="modal-container" v-on:click="stopEvent">
+					<header class="modal-header">情報を登録して読書を開始しよう！</header>
+					<div class="modal-content">
+						<div class="modal-content-left">
+							<slot name="modal-img"></slot>
+						</div>
+						<div class="modal-content-right">
+							<slot name="form"></slot>
+						</div>
+					</div>
+				</div>
+			</div>
+		</transition>
+	`,
+  data() {
+    return {
+      modalWindow: false,
+    };
+  },
+  methods: {
+    stopEvent(envet) {
+      event.stopPropagation();
+    },
+  },
+});
+modal2.mount("#modal2");

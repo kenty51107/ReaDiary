@@ -1,6 +1,28 @@
 <%= render 'shared/dashboard' %>
 
-<div class="timeline">
-  <%= render 'shared/record_links' %>
-  <%= render @records %>
+<div class="bookshelf-container">
+  <div class="bookshelf-tab">
+    <ul>
+      <%= link_to user_records_path(@user) do %>
+      <li class="<%= 'active' if current_page?(user_records_path(@user)) %>">
+        全て
+      </li>
+      <% end %>
+      <%= link_to show_comment_user_records_path(@user.id) do %>
+      <li class="<%= 'active' if current_page?(show_comment_user_records_path(@user.id)) %>">
+        コメント
+      </li>
+      <% end %>
+      <%= link_to  show_review_user_records_path(@user.id) do %>
+      <li class="<%= 'active' if current_page?(show_review_user_records_path(@user.id)) %>">
+        レビュー
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="bookshelf-body">
+    <div class="timeline">
+      <%= render @records %>
+    </div>
+	</div>
 </div>

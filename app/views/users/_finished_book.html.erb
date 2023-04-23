@@ -29,7 +29,9 @@
                 <%= link_to "この本のレビューを書きませんか？", new_record_path(record_id: latest_record(book).id) %>
               </div>
             <% end %>
+            <% if @user == current_user %>
               <%= link_to "削除", book, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "読書記録を削除しますか？" } %>
+            <% end %>
           </div>
         </div>
       </div>
