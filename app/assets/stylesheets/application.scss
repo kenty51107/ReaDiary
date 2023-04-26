@@ -1244,7 +1244,8 @@ h2 {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-top: 30px;
+  margin: 30px auto;
+  width: 60%;
   .book-detail-container {
     width: 30%;
     .book-detail {
