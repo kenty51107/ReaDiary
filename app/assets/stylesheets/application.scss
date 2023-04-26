@@ -1245,13 +1245,13 @@ h2 {
   justify-content: center;
   gap: 30px;
   margin: 30px auto;
-  width: 60%;
   .book-detail-container {
     width: 30%;
     .book-detail {
       background-color: $gray-200;
       border-radius: 5px;
       padding: 20px;
+      max-width: 500px;
       .book-img {
         width: 100%;
         height: 100%;
@@ -1278,5 +1278,6 @@ h2 {
   }
   .timeline {
     margin: 0;
+    max-width: 500px;
   }
 }
