@@ -8,6 +8,25 @@ ja:
               blank: "カテゴリーが空欄です。"
             page_count:
               blank: "書籍のページ数が空です。"
+            user_id:
+              blank: "ユーザーIDが未入力です"
+            title:
+              blank: "タイトルが未入力です"
+              too_long: "%{count}文字以内で入力してください"
+            author:
+              blank: "著者が未入力です"
+              too_long: "%{count}文字以内で入力してください"
+            page_count:
+              blank: "ページ数が未入力です"
+            isbn_10:
+              blank: "ISBN-10が未入力です"
+              wrong_length: "10桁で入力してください"
+            isbn_13:
+              blank: "ISBN-13が未入力です"
+              wrong_length: "13桁で入力してください"
+            category:
+              blank: "カテゴリーが未入力です"
+
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"
@@ -78,6 +97,25 @@ ja:
         rating: ""
     models:
       user: ユーザー
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "未入力です"
+              too_long: "%{count}文字以内で入力してください"
+              invalid: "有効ではありません"
+            email:
+              blank: "未入力です"
+              invalid: "有効ではありません"
+            password:
+              blank: "未入力です"
+              invalid: "有効ではありません"
+              too_short: "%{count}文字以上で入力してください"
+            password_confirmaion:
+              blank: "未入力です"
+              invalid: "有効ではありません"
+              confirmation: "一致しません"
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
